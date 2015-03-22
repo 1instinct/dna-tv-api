@@ -1,18 +1,33 @@
 var express = require('express');
-var $ = require('jquery-latest');
 var app = express();
-var result = '{"FirstName":"John","LastName":"Doe","Email":"johndoe@johndoe.com","Phone":"123 dead drive"}';
+var bodyParser = require('body-parser');
+var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc";
+var request = require('superagent');
+var port = 5000;
 
-
-app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(request, response) {
-	$.each($.parseJSON(result), function(k, v) {
-		alert(k + ' is ' + v);
+function process(arr) {
+	return arr.map(function(item) {
+		return {
+			title: item.video.title,
+			url: 'www.youtube.com/watch?v=' + item.video.id
+		}
+	});
+}
+
+app.get('/vids', function (req, res) {
+	request.get(vids).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var vids = process(response.body.data.items);
+			res.status(200).send(vids);
+		}
 	});
 });
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
+app.listen(port, function() {
+	console.log("Node app is running at localhost:" + port);
 });
