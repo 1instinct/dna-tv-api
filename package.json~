@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "~4.9.x",
+    "jquery-latest": "~1.9.x",
     "superagent": "^1.1.0"
   },
   "engines": {
