@@ -7,9 +7,9 @@ var port = 8080;
 function process(arr) {
 	return arr.map(function(item) {
 		return {
-			title: item.video.title,
 			url: 'www.youtube.com/watch?v=' + item.video.id,
-			_id: item.id
+			_id: item.id,
+			title: item.video.title
 		}
 	});
 }
