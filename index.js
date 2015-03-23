@@ -8,7 +8,8 @@ function process(arr) {
 	return arr.map(function(item) {
 		return {
 			title: item.video.title,
-			url: 'www.youtube.com/watch?v=' + item.video.id
+			url: 'www.youtube.com/watch?v=' + item.video.id,
+			id: item.id
 		}
 	});
 }
