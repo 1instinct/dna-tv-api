@@ -2,9 +2,7 @@ var express = require('express');
 var app = express();
 var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc";
 var request = require('superagent');
-var port = 8080;
-
-app.use(express.static(__dirname + '/public'));
+var port = 5000;
 
 function process(arr) {
 	return arr.map(function(item) {
@@ -14,10 +12,6 @@ function process(arr) {
 		}
 	});
 }
-
-app.get('/', function(req, res) {
-	res.send('Hello World!');
-});
 
 app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
