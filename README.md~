@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # JSONfilter
 
 A Node.js app using [Express 4](http://expressjs.com/), used .
@@ -49,3 +50,4 @@ For more information about using Node.js on Heroku, see these Dev Center article
 =======
 # jsonifier
 Simple map of external JSON, filter by key, output to internal JSON route
+>>>>>>> 2501ced19b023e731a09b77b384b73cecb9f8f81
