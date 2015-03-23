@@ -9,7 +9,7 @@ function process(arr) {
 		return {
 			title: item.video.title,
 			url: 'www.youtube.com/watch?v=' + item.video.id,
-			id: item.id
+			_id: item.id
 		}
 	});
 }
