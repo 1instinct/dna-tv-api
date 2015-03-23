@@ -15,6 +15,10 @@ function process(arr) {
 	});
 }
 
+app.get('/', function(req, res) {
+	res.send('Hello World!');
+});
+
 app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
 		if (err) {
