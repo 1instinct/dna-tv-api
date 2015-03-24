@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 function process(arr) {
 	return arr.map(function(item) {
 		return {
-			url: 'www.youtube.com/watch?v=' + item.video.id,
+			url: item.video.id,
 			_id: item.id,
 			title: item.video.title
 		}
