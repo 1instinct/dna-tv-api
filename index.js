@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc";
+var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc&max-results=50";
 var request = require('superagent');
 var port = 8080;
 
