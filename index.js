@@ -3,10 +3,6 @@ var app = express();
 var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc&max-results=50";
 var request = require('superagent');
 var port = 8080;
-var vids2 = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc&max-results=50";
-
-// Merges both arrays and gets unique items
-var vidList = arrayUnique(vids.concat(vids2));
 
 // Add headers
 app.use(function (req, res, next) {
@@ -38,25 +34,14 @@ function process(arr) {
 	});
 }
 
-function arrayUnique(array) {
-    var a = arr.concat();
-    for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-            if(a[i] === a[j])
-                a.splice(j--, 1);
-        }
-    }
-    return a;
-};
-
 app.get('/vids', function (req, res) {
-	request.get(vidList).end(function(err,response) {
+	request.get(vids).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vidList = process(response.body.data.items);
-			res.status(200).send(vidList);
+			var vids = process(response.body.data.items);
+			res.status(200).send(vids);
 		}
 	});
 });
