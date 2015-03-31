@@ -1,19 +1,16 @@
 var express = require('express');
 var app = express();
 var vids = "http://gdata.youtube.com/feeds/api/playlists/PLUfG5WpANuJpIm62ldjjpunTRb3hABEA4?v=2&alt=jsonc&max-results=50";
-var vids2 = "http://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=50";
+// var vids2 = "http://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=50";
+
 var request = require('superagent');
 var port = 8080;
-
-var vidList={};
-for(var key in vids) result[key]=vids[key];
-for(var key in vids2) result[key]=vids2[key];
 
 // Add headers
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://dev.galoremag.com');
+    res.setHeader('Access-Control-Allow-Origin', '//galoremag.com');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -39,14 +36,30 @@ function process(arr) {
 	});
 }
 
+function process2(arr2) {
+	return arr2.map(function(item) {
+		return {
+			url: item.video.id,
+			_id: item.id,
+			title: item.video.title
+		}
+	});
+}
+
+function stripList(arr3) {
+	var result={};
+	for(var key in arr1) result[key]=arr1[key];
+	for(var key in arr1) result[key]=arr1[key];
+}
+
 app.get('/vids', function (req, res) {
-	request.get(vidList).end(function(err,response) {
+	request.get(vids).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
 			var vids = process(response.body.data.items);
-			res.status(200).send(vidList);
+			res.status(200).send(vids);
 		}
 	});
 });
