@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var vids = "http://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=25";
+var vids = "//gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=25";
 var request = require('superagent');
 var port = 8080;
 
@@ -28,8 +28,8 @@ function process(arr) {
 	return arr.map(function(item) {
 		return {
 			url: item.video.id,
-			_id: item.id
-			// title: item.video.title
+			// _id: item.id
+			title: item.video.title
 		}
 	});
 }
