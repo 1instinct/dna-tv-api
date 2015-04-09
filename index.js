@@ -38,22 +38,6 @@ function process(arr) {
 	});
 }
 
-function process2(arr2) {
-	return arr2.map(function(item) {
-		return {
-			url: item.video.id,
-			_id: item.id,
-			title: item.video.title
-		}
-	});
-}
-
-function stripList(arr3) {
-	var result={};
-	for(var key in arr1) result[key]=arr1[key];
-	for(var key in arr1) result[key]=arr1[key];
-}
-
 app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
 		if (err) {
