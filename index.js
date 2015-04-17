@@ -29,7 +29,7 @@ function process(arr) {
 	return arr.map(function(item) {
 		return {
 			url: item.video.id,
-			// _id: item.id
+			_id: item.id,
 			title: item.video.title
 		}
 	});
