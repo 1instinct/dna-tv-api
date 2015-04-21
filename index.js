@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
-// var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=50";
-var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr?v=2&alt=jsonc&max-results=49";
+// GaloreTV
+// var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=49";
+// Galore TV 2
+// var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr?v=2&alt=jsonc&max-results=49";
+// GaloreTV 3
+var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH?v=2&alt=jsonc&max-results=49";
 var request = require('superagent');
 var port = 8080;
 
