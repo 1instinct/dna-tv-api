@@ -5,7 +5,7 @@ var app = express();
 // Galore TV 2
 // var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr?v=2&alt=jsonc&max-results=49";
 // GaloreTV 3
-var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH?v=2&alt=jsonc&max-results=49";
+var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH?v=2&alt=jsonc&max-results=33";
 var request = require('superagent');
 var port = 8080;
 
