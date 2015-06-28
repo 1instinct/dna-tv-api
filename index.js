@@ -8,7 +8,7 @@ var Youtube = require("youtube-api");
 // GaloreTV 3
 var vids = "https://www.googleapis.com/youtube/v3/playlists?part=id%2C+player&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyD4GXoUQHtAEhNxKm40YkwOR1hPs1EKZhU";
 var request = require('superagent');
-var port = 8080;
+var port = 80;
 
 Youtube.authenticate({
     type: "key",
@@ -24,6 +24,15 @@ function process(arr) {
 		}
 	});
 }
+
+// List your subcribers 
+Youtube.playlists.list({
+    "part": "contentDetails",
+	"mySubscribers": true,
+	"maxResults": 50
+	}, function (err, data) {
+    	console.log(err || data);
+});
 
 app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
