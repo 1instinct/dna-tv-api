@@ -7,7 +7,7 @@ var app = express();
 // var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr?v=2&alt=jsonc&max-results=49";
 // GaloreTV 3
 // var vids = "https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBLyj8zZcwPLTtQeTvA9j-fXCGZrMoz6TI";
-var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBLyj8zZcwPLTtQeTvA9j-fXCGZrMoz6TI';
+var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyD-_SyJzfqH4DrdwLsc3VXNeIH6jxqkufw';
 
 var request = require('superagent');
 var port = 80;
