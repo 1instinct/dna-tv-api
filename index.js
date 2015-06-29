@@ -10,10 +10,10 @@ var vids = "https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%
 var request = require('superagent');
 var port = 80;
 
-Youtube.authenticate({
-    type: "key",
-	key: "AIzaSyD4GXoUQHtAEhNxKm40YkwOR1hPs1EKZhU"
-});
+// Youtube.authenticate({
+//     type: "key",
+// 	key: "AIzaSyD4GXoUQHtAEhNxKm40YkwOR1hPs1EKZhU"
+// });
 
 function process(arr) {
 	return arr.map(function(item) {
@@ -26,13 +26,13 @@ function process(arr) {
 }
 
 // List your subcribers 
-Youtube.playlists.list({
-    "part": "contentDetails",
-	"mySubscribers": true,
-	"maxResults": 50
-	}, function (err, data) {
-    	console.log(err || data);
-});
+// Youtube.playlists.list({
+//     "part": "contentDetails",
+// 	"mySubscribers": true,
+// 	"maxResults": 50
+// 	}, function (err, data) {
+//     	console.log(err || data);
+// });
 
 app.get('/', function (req, res) {
 	request.get(vids).end(function(err,response) {
