@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var Youtube = require("youtube-api");
+// var Youtube = require("youtube-api");
 // GaloreTV 1
 // var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b?v=2&alt=jsonc&max-results=49";
 // Galore TV 2
