@@ -25,9 +25,9 @@ Youtube.authenticate({
 	key: "AIzaSyD4GXoUQHtAEhNxKm40YkwOR1hPs1EKZhU"
 });
 
-YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet").setId(videoId);
-          listVideosRequest.setKey(API_KEY);
-          VideoListResponse listResponse = listVideosRequest.execute();
+// YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet").setId(videoId);
+//           listVideosRequest.setKey(API_KEY);
+//           VideoListResponse listResponse = listVideosRequest.execute();
 
 // get the long url of a shortened url
 urlshortener.url.get(params, function (err, response) {
