@@ -34,7 +34,7 @@ function process(arr) {
 //     	console.log(err || data);
 // });
 
-app.get('/', function (req, res) {
+app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
 		if (err) {
 			console.log(err);
