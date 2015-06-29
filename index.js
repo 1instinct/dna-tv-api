@@ -34,7 +34,7 @@ Youtube.playlists.list({
     	console.log(err || data);
 });
 
-app.get('/vids', function (req, res) {
+app.get('/', function (req, res) {
 	request.get(vids).end(function(err,response) {
 		if (err) {
 			console.log(err);
