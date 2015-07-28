@@ -1,9 +1,8 @@
 var express = require('express');
 var app = express();
-var google = require('googleapis');
-var urlshortener = google.urlshortener('v1');
-var params = { shortUrl: 'http://goo.gl/xKbRu3' };
+
 var Youtube = require("youtube-api");
+
 var API_KEY = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 var channelId = 'UCyzzsgpNlmLBKYcXLM3Ro3g';
 var plid = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G'
@@ -15,7 +14,7 @@ var maxResults = '33';
 // var vids = "https://gdata.youtube.com/feeds/api/playlists/PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr?v=2&alt=jsonc&max-results=49";
 // GaloreTV 3
 // var vids = "https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBLyj8zZcwPLTtQeTvA9j-fXCGZrMoz6TI";
-var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBVG4a32otoscjnNXbuw9lg1LwC2AvWss0';
+// var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBVG4a32otoscjnNXbuw9lg1LwC2AvWss0';
 
 var request = require('superagent');
 var port = 80;
@@ -25,7 +24,7 @@ Youtube.authenticate({
 	key: "AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s"
 });
 
-Youtube.channels.list({
+Youtube.playlists.list({
     "part": "PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b",
     "maxResults": 50
 }, function (err, data) {
