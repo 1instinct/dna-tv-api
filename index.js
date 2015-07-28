@@ -24,25 +24,9 @@ Youtube.authenticate({
 	key: "AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s"
 });
 
-Youtube.playlists.list({
-    "part": "PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b",
-    "maxResults": 50
-}, function (err, data) {
-    console.log(err, data);
-});
-
 // YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet").setId(videoId);
 //           listVideosRequest.setKey(API_KEY);
 //           VideoListResponse listResponse = listVideosRequest.execute();
-
-// get the long url of a shortened url
-urlshortener.url.get(params, function (err, response) {
-  if (err) {
-    console.log('Encountered error', err);
-  } else {
-    console.log('Long url is', response.longUrl);
-  }
-});
 
 function process(arr) {
 	return arr.map(function(item) {
@@ -55,13 +39,14 @@ function process(arr) {
 }
 
 // List your subcribers 
-// Youtube.playlists.list({
-//     "part": "contentDetails",
-// 	"mySubscribers": true,
-// 	"maxResults": 50
-// 	}, function (err, data) {
-//     	console.log(err || data);
-// });
+Youtube.playlists.list({
+	"id": "PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b",
+    "part": "contentDetails",
+	// "mySubscribers": true,
+	"maxResults": 50
+	}, function (err, data) {
+    	console.log(err, data);
+});
 
 app.get('/vids', function (req, res) {
 	request.get(vids).end(function(err,response) {
