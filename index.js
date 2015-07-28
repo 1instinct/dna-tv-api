@@ -4,7 +4,7 @@ var google = require('googleapis');
 var urlshortener = google.urlshortener('v1');
 var params = { shortUrl: 'http://goo.gl/xKbRu3' };
 var Youtube = require("youtube-api");
-var API_KEY = 'AIzaSyD-_SyJzfqH4DrdwLsc3VXNeIH6jxqkufw';
+var API_KEY = 'AIzaSyBVG4a32otoscjnNXbuw9lg1LwC2AvWss0';
 var channelId = 'UCyzzsgpNlmLBKYcXLM3Ro3g';
 var plid = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G'
 var maxResults = '33';
@@ -23,6 +23,14 @@ var port = 80;
 Youtube.authenticate({
     type: "key",
 	key: "AIzaSyD4GXoUQHtAEhNxKm40YkwOR1hPs1EKZhU"
+});
+
+Youtube.channels.list({
+    "part": "PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b",
+    "mySubscribers": true,
+    "maxResults": 50
+}, function (err, data) {
+    console.log(err, data);
 });
 
 // YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet").setId(videoId);
