@@ -15,7 +15,7 @@ var maxResults = '33';
 // GaloreTV 3
 // var vids = "https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBLyj8zZcwPLTtQeTvA9j-fXCGZrMoz6TI";
 // var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails%2Cid%2Cplayer&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&maxResults=33&key=AIzaSyBVG4a32otoscjnNXbuw9lg1LwC2AvWss0';
-var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails&id=PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b&maxResults=33&fields=items(contentDetails%2Cetag%2Cid%2Ckind%2Cplayer%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
+var vids = 'https://www.googleapis.com/youtube/v3/playlists?part=contentDetails&id=PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b&maxResults=33&fields=items(contentDetails%2Cetag%2Cid%2Ckind%2Cplayer%2Csnippet%2Cstatus)&key=AIzaSyBVG4a32otoscjnNXbuw9lg1LwC2AvWss0';
 
 var request = require('superagent');
 var port = 80;
