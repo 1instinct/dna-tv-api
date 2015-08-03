@@ -32,7 +32,7 @@ var port = 80;
 function process(arr) {
 	return arr.map(function(items) {
 		return {
-			url: items.resourceId.videoId,
+			url: items.snippet.resourceId.videoId,
 			_id: items.id,
 			title: item.snippet.title
 		}
