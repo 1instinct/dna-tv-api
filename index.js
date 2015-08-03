@@ -18,7 +18,7 @@ var maxResults = '33';
 var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
 var request = require('superagent');
-var port = 80;
+var port = 8080;
 
 // Youtube.authenticate({
 //     type: "key",
