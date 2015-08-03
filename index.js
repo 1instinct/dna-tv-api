@@ -30,10 +30,10 @@ var port = 80;
 //           VideoListResponse listResponse = listVideosRequest.execute();
 
 function process(arr) {
-	return arr.map(function(items) {
+	return arr.map(function(item) {
 		return {
-			url: items.resourceId.videoId,
-			_id: items.id,
+			url: item.resourceId.videoId,
+			_id: item.id,
 			title: item.snippet.title
 		}
 	});
