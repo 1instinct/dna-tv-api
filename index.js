@@ -30,11 +30,11 @@ var port = 80;
 //           VideoListResponse listResponse = listVideosRequest.execute();
 
 function process(arr) {
-	return arr.map(function(item) {
+	return arr.map(function(items) {
 		return {
-			url: item.video.id,
-			_id: item.id
-			// title: item.video.title
+			url: items.resourceId.videoId,
+			_id: items.id,
+			title: item.snippet.title
 		}
 	});
 }
