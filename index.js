@@ -34,7 +34,7 @@ function process(arr) {
 		return {
 			url: items.snippet.resourceId.videoId,
 			_id: items.id,
-			title: item.snippet.title
+			title: items.snippet.title
 		}
 	});
 }
