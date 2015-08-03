@@ -32,8 +32,8 @@ var port = 80;
 function process(arr) {
 	return arr.map(function(item) {
 		return {
-			url: item.resourceId.videoId,
-			_id: item.id,
+			url: items.resourceId.videoId,
+			_id: items.id,
 			title: item.snippet.title
 		}
 	});
