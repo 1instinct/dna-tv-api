@@ -45,7 +45,7 @@ app.get('/vids', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vids = process(response.body.data.items);
+			var vids = process(response.body.items);
 			res.status(200).send(vids);
 		}
 	});
