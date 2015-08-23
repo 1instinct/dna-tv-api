@@ -12,7 +12,6 @@ var vids3 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDet
 // Galore TV 4
 var vids4 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwaWgJtRGfkzkSot2ELUCR-l&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 5
-var vids5 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
 var request = require('superagent');
 var port = 80;
@@ -43,15 +42,15 @@ app.get('/', function (req, res) {
 			res.status(200).send(vids3);
 		}
 	});
-	request.get(vids3).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
-			var vids3 = process(response.body.items);
-			res.status(200).send(vids3);
-		}
-	});
+	// request.get(vids3).end(function(err,response) {
+	// 	if (err) {
+	// 		console.log(err);
+	// 		res.status(404).send(err);
+	// 	} else {
+	// 		var vids3 = process(response.body.items);
+	// 		res.status(200).send(vids3);
+	// 	}
+	// });
 });
 
 app.listen(port, function() {
