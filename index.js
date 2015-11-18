@@ -7,7 +7,8 @@ var maxResults = '33';
 // var playlistId, nextPageToken, prevPageToken;
 
 // var apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
-var apiKey = '1/g0-4IJCPvU-j66F0Sv6bJOfPpxdW2PSqT-iLgCeeEx4';
+var apiKey = '1/Dt5cBhLxKG_EjyWZxYEJ7oADupiaJmrl_G_846BZ1mZIgOrJDtdun6zK6XiATCKT';
+
 
 var chanID = 'UCyzzsgpNlmLBKYcXLM3Ro3g';
 
