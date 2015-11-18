@@ -12,7 +12,7 @@ var chanID = 'UCyzzsgpNlmLBKYcXLM3Ro3g';
 
 var allVidsID = 'UCyzzsgpNlmLBKYcXLM3Ro3g';
 
-var allVids = 'https://www.googleapis.com/youtube/v3/search?key='apiKey'&channelId='chanID'&part=snippet,id&order=date&maxResults=20
+var allVids = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet,id&order=date&maxResults=20
 '
 
 // GaloreTV 1
