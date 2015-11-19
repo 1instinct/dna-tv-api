@@ -30,12 +30,24 @@ var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDeta
 var request = require('superagent');
 var port = 80;
 
-function process(arr) {
+// Videos that are uploaded directly
+function processOriginalVids(arr) {
 	return map(function(items) {
 		return {
-			url: items.id.videoId
+			url: items.id.videoId,
 			_id: items.id.videoId,
-			title: items.snippet.title,
+			title: items.snippet.title
+		}
+	});
+}
+
+// Videos that are saved and playlisted from other users
+function processSavedVids(arr) {
+	return map(function(items) {
+		return {
+			url: items.snippet.resourceId.videoId,
+			_id: items.id.videoId,
+			title: items.snippet.title
 		}
 	});
 }
@@ -70,7 +82,7 @@ app.get('/', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var allVids = process(response.body.items);
+			var allVids = processOriginalVids(response.body.items);
 			res.status(200).send(allVids);
 		}
 	});
