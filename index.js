@@ -30,7 +30,7 @@ function process(arr) {
 			_id: items.id.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
-			thumbL: 
+			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
 }
