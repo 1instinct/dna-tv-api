@@ -16,7 +16,7 @@ var maxResults = '33',
 // Galore TV 3
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 4
-var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+playlist4+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
+var vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+playlist4+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
@@ -28,6 +28,18 @@ function process(arr) {
 		return {
 			url: items.id.videoId,
 			_id: items.id.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			thumbL: 
+		}
+	});
+}
+
+function processOld(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.snippet.resourceId.videoId,
+			_id: items.id,
 			title: items.snippet.title
 		}
 	});
@@ -39,7 +51,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', function (req, res) {
+app.get('/all', function (req, res) {
 	request.get(allVids).end(function(err,response) {
 		if (err) {
 			console.log(err);
@@ -47,6 +59,18 @@ app.get('/', function (req, res) {
 		} else {
 			var allVids = process(response.body.items);
 			res.status(200).send(allVids);
+		}
+	});
+});
+
+app.get('/vintage', function (req, res) {
+	request.get(vintage).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var vintage = process(response.body.items);
+			res.status(200).send(vintage);
 		}
 	});
 });
