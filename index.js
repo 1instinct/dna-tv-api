@@ -33,7 +33,7 @@ var request = require('superagent');
 var port = 80;
 
 // Videos that are uploaded directly
-function processOriginalVids(arr) {
+function process(arr) {
 	return map(function(items) {
 		return {
 			url: items.id.videoId,
@@ -84,7 +84,7 @@ app.get('/', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vids = processOriginalVids(response.body.items);
+			var vids = process(response.body.items);
 			res.status(200).send(vids);
 		}
 	});
