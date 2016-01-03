@@ -41,8 +41,7 @@ function processOld(arr) {
 			url: items.id.videoId,
 			_id: items.id.videoId,
 			title: items.snippet.title,
-			desc: items.snippet.description,
-			thumbL: items.snippet.thumbnails.medium.url
+			desc: items.snippet.description
 		}
 	});
 }
