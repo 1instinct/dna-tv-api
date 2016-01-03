@@ -38,9 +38,11 @@ function process(arr) {
 function processOld(arr) {
 	return arr.map(function(items) {
 		return {
-			url: items.snippet.resourceId.videoId,
-			_id: items.id,
-			title: items.snippet.title
+			url: items.id.videoId,
+			_id: items.id.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
 }
@@ -69,7 +71,7 @@ app.get('/vintage', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vintage = process(response.body.items);
+			var vintage = processOld(response.body.items);
 			res.status(200).send(vintage);
 		}
 	});
