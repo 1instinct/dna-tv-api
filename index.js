@@ -35,16 +35,17 @@ function process(arr) {
 	});
 };
 
-// function processOld(arr) {
-// 	return arr.map(function(items) {
-// 		return {
-// 			url: items.id.videoId,
-// 			_id: items.id.videoId,
-// 			title: items.snippet.title,
-// 			desc: items.snippet.description
-// 		}
-// 	});
-// };
+function processOld(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id.videoId,
+			_id: items.id.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			thumbL: items.snippet.thumbnails.default.url
+		}
+	});
+};
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -70,7 +71,7 @@ app.get('/vintage', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vintage = process(response.body.items);
+			var vintage = processOld(response.body.items);
 			res.status(200).send(vintage);
 		}
 	});
