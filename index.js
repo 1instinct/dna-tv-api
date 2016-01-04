@@ -16,6 +16,7 @@ var maxResults = '33',
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
 	listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
 	listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
+	listExclusives = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
 
 	accessToken = '1/Dt5cBhLxKG_EjyWZxYEJ7oADupiaJmrl_G_846BZ1mZIgOrJDtdun6zK6XiATCKT',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
@@ -41,6 +42,7 @@ var liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=content
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey,
 	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey,
 	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
+	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
 
 var request = require('superagent');
 var port = 80;
@@ -180,6 +182,18 @@ app.get('/bombshells', function (req, res) {
 		} else {
 			var bombshells = process(response.body.items);
 			res.status(200).send(bombshells);
+		}
+	});
+});
+
+app.get('/exclusives', function (req, res) {
+	request.get(exclusives).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var exclusives = process(response.body.items);
+			res.status(200).send(exclusives);
 		}
 	});
 });
