@@ -42,7 +42,7 @@ function processOld(arr) {
 			_id: items.id.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
-			thumbL: items.snippet.thumbnails.default.url
+			thumbL: items.snippet.resourceId.videoId
 		}
 	});
 };
