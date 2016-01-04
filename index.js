@@ -65,7 +65,7 @@ function process(arr) {
 	});
 };
 
-function processVintage(arr) {
+function processOther(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
@@ -102,7 +102,7 @@ app.get('/vintage', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vintage = processVintage(response.body.items);
+			var vintage = processOther(response.body.items);
 			res.status(200).send(vintage);
 		}
 	});
@@ -198,7 +198,7 @@ app.get('/exclusives', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var exclusives = process(response.body.items);
+			var exclusives = processOther(response.body.items);
 			res.status(200).send(exclusives);
 		}
 	});
