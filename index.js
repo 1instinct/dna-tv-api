@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var request = require('superagent');
+var port = 80;
+
 var maxResults = '33',
 	
 	listVintage1 = 'PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b',
@@ -47,8 +50,6 @@ var liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet
 	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey;
 	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey;
 
-var request = require('superagent');
-var port = 80;
 
 function process(arr) {
 	return arr.map(function(items) {
@@ -203,6 +204,13 @@ app.get('/exclusives', function (req, res) {
 	});
 });
 
-app.listen(port, function() {
-	console.log("Node app is running at localhost:" + port);
+var server = app.listen(port, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
 });
+
+// app.listen(port, function() {
+// 	console.log("Node app is running at localhost:" + port);
+// });
