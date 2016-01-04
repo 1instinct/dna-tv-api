@@ -141,7 +141,7 @@ app.get('/askPush', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var askPush = process(response.body.items);
+			var askPush = processList(response.body.items);
 			res.status(200).send(askPush);
 		}
 	});
@@ -153,7 +153,7 @@ app.get('/model20', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var model20 = process(response.body.items);
+			var model20 = processList(response.body.items);
 			res.status(200).send(model20);
 		}
 	});
@@ -165,7 +165,7 @@ app.get('/teachMe', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var teachMe = process(response.body.items);
+			var teachMe = processList(response.body.items);
 			res.status(200).send(teachMe);
 		}
 	});
@@ -177,7 +177,7 @@ app.get('/girls', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var girls = process(response.body.items);
+			var girls = processList(response.body.items);
 			res.status(200).send(girls);
 		}
 	});
@@ -189,7 +189,7 @@ app.get('/inBed', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var inBed = process(response.body.items);
+			var inBed = processList(response.body.items);
 			res.status(200).send(inBed);
 		}
 	});
@@ -201,7 +201,7 @@ app.get('/bombshells', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var bombshells = process(response.body.items);
+			var bombshells = processList(response.body.items);
 			res.status(200).send(bombshells);
 		}
 	});
