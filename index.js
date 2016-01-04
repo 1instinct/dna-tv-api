@@ -42,7 +42,7 @@ function processOld(arr) {
 			_id: items.id.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
-			thumbL: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + 'mqdefault.jpg'
+			thumbL: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
 	});
 };
