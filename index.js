@@ -65,6 +65,21 @@ function process(arr) {
 	});
 };
 
+function processList(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id.videoId,
+			_id: items.id.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			date: items.snippet.publishedAt,
+			list: items.snippet.playlistId,
+			// below not working for every request
+			thumbL: items.snippet.thumbnails.medium.url
+		}
+	});
+};
+
 function processOther(arr) {
 	return arr.map(function(items) {
 		return {
