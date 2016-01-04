@@ -30,7 +30,7 @@ var maxResults = '33',
 // Galore TV 3
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 4
-var listVintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listVintage+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
+var vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults='+maxResults+'&playlistId='+listVintage4+'&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key='+apiKey;
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2C+snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&fields=items(contentDetails%2Cetag%2Cid%2Csnippet%2Cstatus)&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
@@ -45,20 +45,20 @@ var liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=content
 var request = require('superagent');
 var port = 80;
 
-// function process(arr) {
-// 	return arr.map(function(items) {
-// 		return {
-// 			url: items.id.videoId,
-// 			_id: items.id.videoId,
-// 			title: items.snippet.title,
-// 			desc: items.snippet.description,
-// 			// below not working for every request
-// 			thumbL: items.snippet.thumbnails.medium.url
-// 		}
-// 	});
-// };
-
 function process(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id.videoId,
+			_id: items.id.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			// below not working for every request
+			thumbL: items.snippet.thumbnails.medium.url
+		}
+	});
+};
+
+function processVintage(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
@@ -94,7 +94,7 @@ app.get('/vintage', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vintage = process(response.body.items);
+			var vintage = processVintage(response.body.items);
 			res.status(200).send(vintage);
 		}
 	});
