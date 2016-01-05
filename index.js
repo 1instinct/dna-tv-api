@@ -88,6 +88,7 @@ function processOther(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
+			list: items.snippet.playlistId,
 			thumbL: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
 	});
