@@ -68,8 +68,8 @@ function process(arr) {
 function processList(arr) {
 	return arr.map(function(items) {
 		return {
-			url: items.id.videoId,
-			_id: items.id.videoId,
+			url: items.snippet.resourceId.videoId,
+			_id: items.snippet.resourceId.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
