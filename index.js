@@ -25,6 +25,7 @@ var maxResults = '33',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
 	chanID = 'UCyzzsgpNlmLBKYcXLM3Ro3g',
 
+	shows = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId='+chanID+'&key='+apiKey+'&maxResults='+maxResults,
 	theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=date&maxResults='+maxResults;
 	mostPopular = theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=viewCount&maxResults='+maxResults,
 
@@ -99,6 +100,18 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
+});
+
+app.get('/shows', function (req, res) {
+	request.get(theLatest).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var theLatest = process(response.body.items);
+			res.status(200).send(theLatest);
+		}
+	});
 });
 
 app.get('/theLatest', function (req, res) {
