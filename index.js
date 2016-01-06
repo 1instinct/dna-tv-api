@@ -103,13 +103,13 @@ app.use(function(req, res, next) {
 });
 
 app.get('/shows', function (req, res) {
-	request.get(theLatest).end(function(err,response) {
+	request.get(shows).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var theLatest = process(response.body.items);
-			res.status(200).send(theLatest);
+			var shows = process(response.body.items);
+			res.status(200).send(shows);
 		}
 	});
 });
