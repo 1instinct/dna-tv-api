@@ -61,7 +61,19 @@ function process(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			// below not working for every request
+			thumbL: items.snippet.thumbnails.medium.url
+		}
+	});
+};
+
+function processShow(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id,
+			_id: items.id,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			date: items.snippet.publishedAt,
 			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
@@ -76,7 +88,6 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
-			// below not working for every request
 			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
@@ -108,7 +119,7 @@ app.get('/shows', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var shows = process(response.body.items);
+			var shows = processShow(response.body.items);
 			res.status(200).send(shows);
 		}
 	});
