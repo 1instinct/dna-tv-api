@@ -12,6 +12,7 @@ var maxResults = '33',
 	listVintage4 = 'PLPp3tIzLUEwaWgJtRGfkzkSot2ELUCR-l',
 	listVintage5 = 'PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD',
 
+	listFeatured = 'PLx0X0-cKhSOBYY6KXhQZg4dmK5pyGQk-o',
 	listLiveFrom = 'PLx0X0-cKhSOChWAkkEvSDv1nWfdIzXr9M',
 	listAskPush = 'PLx0X0-cKhSOAgUD3PjNTnEh4Unqgz1MxL',
 	listModel20 = 'PLx0X0-cKhSOAnlBpACK4BF2zR1MAZ4vLY',
@@ -25,9 +26,10 @@ var maxResults = '33',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
 	chanID = 'UCyzzsgpNlmLBKYcXLM3Ro3g',
 
+	featured = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listFeatured+'&key='+apiKey,
 	shows = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId='+chanID+'&key='+apiKey+'&maxResults='+maxResults,
-	theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=date&maxResults='+maxResults;
-	mostPopular = theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=viewCount&maxResults='+maxResults,
+	theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=date&maxResults='+maxResults,
+	mostPopular = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=viewCount&maxResults='+maxResults,
 
 // Get Playlists by Channel Id
 // https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s&maxResults=33
@@ -133,6 +135,18 @@ app.get('/theLatest', function (req, res) {
 		} else {
 			var theLatest = process(response.body.items);
 			res.status(200).send(theLatest);
+		}
+	});
+});
+
+app.get('/featured', function (req, res) {
+	request.get(featured).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var featured = processList(response.body.items);
+			res.status(200).send(featured);
 		}
 	});
 });
