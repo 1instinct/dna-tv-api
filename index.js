@@ -71,11 +71,10 @@ function processShow(arr) {
 		return {
 			url: items.id,
 			_id: items.id,
-			thumb: items.snippet.thumbnails.medium.url,
-			thumb: items.snippet.thumbnails.maxres.url,
 			title: items.snippet.title,
 			desc: items.snippet.description,
-			date: items.snippet.publishedAt
+			date: items.snippet.publishedAt,
+			thumb: items.snippet.thumbnails.medium.url
 		}
 	});
 };
