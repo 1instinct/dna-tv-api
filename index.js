@@ -61,7 +61,7 @@ function process(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url
+			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
 };
@@ -74,8 +74,7 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			// thumb: items.snippet.thumbnails.medium.url,
-			thumbL: items.snippet.thumbnails.maxres.url
+			thumbL: items.snippet.thumbnails.standard.url
 		}
 	});
 };
@@ -89,7 +88,7 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
-			thumb: items.snippet.thumbnails.medium.url
+			thumbL: items.snippet.thumbnails.medium.url
 		}
 	});
 };
@@ -103,7 +102,7 @@ function processOther(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
+			thumbL: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
 	});
 };
