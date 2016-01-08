@@ -82,7 +82,7 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: function(err, res) {
+			thumb: function() {
 				if (!items.snippet.thumbnails.maxres.url) {
 					return items.snippet.thumbnails.high.url;
 				} else {
