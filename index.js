@@ -46,6 +46,8 @@ var express = require('express'),
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
+	listWithViews = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=TruIq5IxuiU,-VoFbH8jTzE,RPNDXrAvAMg,gmQmYc9-zcg&key='+apiKey;
+
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
 	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
 	model20 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listModel20+'&key='+apiKey,
@@ -60,6 +62,24 @@ cloudinary.config({
   api_key: '789423776114718', 
   api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY' 
 });
+
+function processIdCSV(arr) {
+	return arr.map(function(items) {
+		// return {
+		// 	url: items.id.videoId,
+		// 	_id: items.id.videoId,
+		// 	title: items.snippet.title,
+		// 	desc: items.snippet.description,
+		// 	date: items.snippet.publishedAt,
+		// 	thumb: items.snippet.thumbnails.medium.url
+		// }
+		items = [];
+		Object.keys(obj).forEach(function(key) {
+		    items.push(obj[key]);
+		});
+		return items.join(",");
+	});
+};
 
 function process(arr) {
 	return arr.map(function(items) {
@@ -148,7 +168,7 @@ app.get('/theLatest', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var theLatest = process(response.body.items);
+			var theLatest = processIdCSV(response.body.items);
 			res.status(200).send(theLatest);
 		}
 	});
