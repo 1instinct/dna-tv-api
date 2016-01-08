@@ -134,6 +134,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(json2csv.expressDecorator);
+
 app.get('/shows', function (req, res) {
 	request.get(shows).end(function(err,response) {
 		if (err) {
@@ -146,6 +148,10 @@ app.get('/shows', function (req, res) {
 	});
 });
 
+app.get('/getCsv', function (req, res) {
+    res.csv(theLatest, "myFile.csv");
+});
+
 app.get('/theLatestCSV', function (req, res) {
 	request.get(theLatest).end(function(err,response) {
 		if (err) {
@@ -153,7 +159,7 @@ app.get('/theLatestCSV', function (req, res) {
 			res.status(404).send(err);
 		} else {
 			var theLatest = process(response.body.items);
-			var ids = json2csv.convert(theLatest, [title]);
+			var ids = json2csv.convert(theLatest, ["id"]);
 			res.status(200).send(ids);
 		}
 	});
