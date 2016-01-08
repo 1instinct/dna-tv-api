@@ -82,13 +82,13 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: function() {
+			thumb: function switcher() {
 				if (!items.snippet.thumbnails.maxres.url) {
 					return items.snippet.thumbnails.high.url;
 				} else {
 					return items.snippet.thumbnails.maxres.url;
 				}
-			}
+			}();
 			// thumb: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 320, height: 180, crop: 'fill'}),
 			// thumbLg: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 1280, height: 720, crop: 'fill'})
 		}
