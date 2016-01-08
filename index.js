@@ -68,17 +68,22 @@ function process(arr) {
 	});
 };
 
-function processShow(arr) {
-	return arr.map(function(items) {
-		return {
-			url: items.id,
-			_id: items.id,
-			title: items.snippet.title,
-			desc: items.snippet.description,
-			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.maxres.url
-		}
-	});
+function processShow(arr, err) {
+	if (err) {
+		console.log(err);
+		return;
+	} else {
+		return arr.map(function(items) {
+			return {
+				url: items.id,
+				_id: items.id,
+				title: items.snippet.title,
+				desc: items.snippet.description,
+				date: items.snippet.publishedAt,
+				thumb: items.snippet.thumbnails.medium.url
+			}
+		});
+	}
 };
 
 function processList(arr) {
