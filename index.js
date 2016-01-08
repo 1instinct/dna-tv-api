@@ -76,7 +76,7 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url
+			thumb: items.snippet.thumbnails.maxres.url
 		}
 	});
 };
