@@ -104,7 +104,8 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
-			thumb: items.snippet.thumbnails.medium.url
+			thumb: items.snippet.thumbnails.medium.url,
+			thumbLg: items.snippet.thumbnails.high.url
 		}
 	});
 };
