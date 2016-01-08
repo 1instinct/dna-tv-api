@@ -89,8 +89,8 @@ function processShow(arr) {
 			// 		return items.snippet.thumbnails.maxres.url;
 			// 	}
 			// }
-			thumb: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 320, height: 180, crop: 'fill'}),
-			thumbLg: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 1280, height: 720, crop: 'fill'})
+			thumb: cloudinary.url("Galore TV Shows/"+items.snippet.title+".jpg", {secure: true, width: 320, height: 180, crop: 'fill'}),
+			thumbLg: cloudinary.url("Galore TV Shows/"+items.snippet.title+".jpg", {secure: true, width: 1280, height: 720, crop: 'fill'})
 		}
 	});
 };
