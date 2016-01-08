@@ -179,7 +179,8 @@ app.get('/theLatestCSV', function (req, res) {
 			res.status(404).send(err);
 		} else {
 			var theLatest = processIds(response.body.items);
-			var ids = ConvertToCSV(theLatest);
+			var str = ConvertToCSV(theLatest);
+			var ids = str.split(/[ ,]+/).join(',');
 			res.status(200).send(ids);
 		}
 	});
