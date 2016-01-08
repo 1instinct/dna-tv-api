@@ -71,10 +71,10 @@ function ConvertToCSV(objArray) {
 
     for (var i = 0; i < array.length; i++) {
         var line = '';
-        for (var index in array[0]) {
+        for (var index in array[i]) {
             if (line != '') line += ','
 
-            line += array[i][index];
+            line += array[i][0];
         }
 
         str += line + '\r\n';
