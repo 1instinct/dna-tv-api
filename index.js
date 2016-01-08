@@ -153,7 +153,7 @@ app.get('/theLatestCSV', function (req, res) {
 			res.status(404).send(err);
 		} else {
 			var theLatest = process(response.body.items);
-			var ids = json2csv.convert(theLatest, ["title"]);
+			var ids = json2csv.convert(theLatest, [title]);
 			res.status(200).send(ids);
 		}
 	});
