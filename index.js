@@ -127,13 +127,13 @@ app.use(function(req, res, next) {
 // 	});
 // });
 
-app.get('/shows', function(req, res) {
+app.get('/shows', function(request, response) {
 	request.get(shows).end(function(err, res) {
 		if (err || !res.ok) {
 			console.log(err);
 		} else {
-			var shows = processShow(response.body.items);
-			res.status(200).send(shows);
+			var shows = processShow(res.body.items);
+			response.status(200).send(shows);
 		}
 	});
 });
