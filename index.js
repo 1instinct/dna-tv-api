@@ -83,6 +83,15 @@ function ConvertToCSV(objArray) {
     return str;
 };
 
+function processIds(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id.videoId
+		}
+	});
+};
+
+
 function process(arr) {
 	return arr.map(function(items) {
 		return {
@@ -170,7 +179,7 @@ app.get('/theLatestCSV', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var theLatest = process(response.body.items);
+			var theLatest = processIds(response.body.items);
 			var ids = ConvertToCSV(theLatest);
 			res.status(200).send(ids);
 		}
