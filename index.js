@@ -1,11 +1,11 @@
-var express = require('express');
-var app = express();
+var express = require('express'),
+	app = express(),
 
-var request = require('superagent');
-var cloudinary = require('cloudinary');
-var port = 80;
+	request = require('superagent'),
+	cloudinary = require('cloudinary'),
+	port = 80,
 
-var maxResults = '33',
+	maxResults = '33',
 	
 	listVintage1 = 'PLPp3tIzLUEwaZfRUCuw1aJbDrTdgdm07b',
 	listVintage2 = 'PLPp3tIzLUEwYySnVu0xLsKr13quhabBGr',
@@ -52,9 +52,14 @@ var maxResults = '33',
 	teachMe = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listTeachMe+'&key='+apiKey,
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
 	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
-	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey;
+	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey,
 	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey;
 
+cloudinary.config({ 
+  cloud_name: 'galore', 
+  api_key: '789423776114718', 
+  api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY' 
+});
 
 function process(arr) {
 	return arr.map(function(items) {
