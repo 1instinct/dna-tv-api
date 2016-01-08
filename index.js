@@ -65,6 +65,24 @@ cloudinary.config({
   api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY' 
 });
 
+function ConvertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+
+            line += array[i][index];
+        }
+
+        str += line + '\r\n';
+    }
+
+    return str;
+};
+
 function process(arr) {
 	return arr.map(function(items) {
 		return {
@@ -153,7 +171,7 @@ app.get('/theLatestCSV', function (req, res) {
 			res.status(404).send(err);
 		} else {
 			var theLatest = process(response.body.items);
-			var ids = json2csv.convert(theLatest, ["title"]);
+			var ids = ConvertToCSV(theLatest);
 			res.status(200).send(ids);
 		}
 	});
