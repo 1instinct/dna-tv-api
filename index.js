@@ -149,7 +149,7 @@ app.get('/shows', function (req, res) {
 });
 
 app.get('/getCsv', function (req, res) {
-    res.csv(theLatest, "myFile.csv");
+    res.csv([theLatest], "myFile.csv");
 });
 
 app.get('/theLatestCSV', function (req, res) {
