@@ -3,6 +3,8 @@ var express = require('express'),
 
 	request = require('superagent'),
 	cloudinary = require('cloudinary'),
+	json2csv = require('nice-json2csv'),
+
 	port = 80,
 
 	maxResults = '33',
@@ -62,24 +64,6 @@ cloudinary.config({
   api_key: '789423776114718', 
   api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY' 
 });
-
-function processIdCSV(arr) {
-	return arr.map(function(items) {
-		// return {
-		// 	url: items.id.videoId,
-		// 	_id: items.id.videoId,
-		// 	title: items.snippet.title,
-		// 	desc: items.snippet.description,
-		// 	date: items.snippet.publishedAt,
-		// 	thumb: items.snippet.thumbnails.medium.url
-		// }
-		items = [];
-		Object.keys(obj).forEach(function(key) {
-		    items.push(obj[key]);
-		});
-		return items.join(",");
-	});
-};
 
 function process(arr) {
 	return arr.map(function(items) {
@@ -168,8 +152,9 @@ app.get('/theLatest', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var theLatest = processIdCSV(response.body.items);
-			res.status(200).send(theLatest);
+			var theLatest = process(response.body.items);
+			var ids = json2csv.convert(theLatest, ["id"]);
+			res.status(200).send(ids);
 		}
 	});
 });
