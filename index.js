@@ -149,7 +149,7 @@ app.get('/shows', function (req, res) {
 });
 
 app.get('/getCsv', function (req, res) {
-    res.convert(theLatest, ["title"]);
+    res.csv(theLatest, ["title"]);
 });
 
 app.get('/theLatestCSV', function (req, res) {
