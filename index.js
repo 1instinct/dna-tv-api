@@ -82,8 +82,9 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 320, height: 180, crop: 'fill'}),
-			thumbLg: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 1280, height: 720, crop: 'fill'})
+			thumb: items.snippet.thumbnails.high.url
+			// thumb: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 320, height: 180, crop: 'fill'}),
+			// thumbLg: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 1280, height: 720, crop: 'fill'})
 		}
 	});
 };
