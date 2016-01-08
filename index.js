@@ -68,22 +68,17 @@ function process(arr) {
 	});
 };
 
-function processShow(arr, err) {
-	if (err) {
-		console.log(err);
-		return;
-	} else {
-		return arr.map(function(items) {
-			return {
-				url: items.id,
-				_id: items.id,
-				title: items.snippet.title,
-				desc: items.snippet.description,
-				date: items.snippet.publishedAt,
-				thumb: items.snippet.thumbnails.maxres.url
-			}
-		});
-	}
+function processShow(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id,
+			_id: items.id,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			date: items.snippet.publishedAt,
+			thumb: items.snippet.thumbnails.maxres.url
+		}
+	});
 };
 
 function processList(arr) {
@@ -121,10 +116,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/shows', function (req, res) {
-	request.get(shows).end(function(err,response) {
+	request.get(shows, function(err,response) {
 		if (err) {
 			console.log(err);
-			res.status(404).send(err);
+			// res.status(404).send(err);
 		} else {
 			var shows = processShow(response.body.items);
 			res.status(200).send(shows);
