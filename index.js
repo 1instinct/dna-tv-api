@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var request = require('superagent');
+var cloudinary = require('cloudinary');
 var port = 80;
 
 var maxResults = '33',
@@ -76,7 +77,7 @@ function processShow(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url
+			thumb: cloudinary.url("Galore TV Shows/model20-01.jpg", {secure: true, width: 320, height: 180, crop: 'fill'})
 		}
 	});
 };
