@@ -136,7 +136,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: items.snippet.thumbnails.maxres.url == null ? items.snippet.thumbnails.high.url : items.snippet.thumbnails.maxres.url
+			thumbLg: if(items.snippet.thumbnails.maxres.url == null) {return items.snippet.thumbnails.high.url; } else {items.snippet.thumbnails.maxres.url}
 		}
 	});
 };
