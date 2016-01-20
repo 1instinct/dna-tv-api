@@ -129,7 +129,7 @@ function processShow(arr) {
 function processList(arr) {
 
 	function hiRes(items) {
-		if (items.snippet.thumbnails.maxres.url == null) {
+		if (!items.snippet.thumbnails.maxres.url) {
 			return items.snippet.thumbnails.high.url;
 		} else {
 			return items.snippet.thumbnails.maxres.url;
