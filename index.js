@@ -48,7 +48,7 @@ var express = require('express'),
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
-	latestWithViewCount = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=TruIq5IxuiU,-VoFbH8jTzE,RPNDXrAvAMg,gmQmYc9-zcg&key='+apiKey;
+	latestWithViewCount = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='++'&key='+apiKey;
 
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
 	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
@@ -135,7 +135,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: items.snippet.thumbnails.high.url
+			thumbLg: items.snippet.thumbnails.maxres.url == null ? items.snippet.thumbnails.high.url : items.snippet.thumbnails.maxres.url
 		}
 	});
 };
