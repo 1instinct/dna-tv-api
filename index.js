@@ -128,15 +128,16 @@ function processShow(arr) {
 
 function processList(arr) {
 
-	function hiRes(items) {
-		if (!("maxres" in items)) {
-			return items.snippet.thumbnails.high.url;
-		} else {
-			return items.snippet.thumbnails.maxres.url;
-		}
-	}
-
 	return arr.map(function(items) {
+	
+		function hiRes(items) {
+			if (!("maxres" in items)) {
+				return items.snippet.thumbnails.high.url;
+			} else {
+				return items.snippet.thumbnails.maxres.url;
+			}
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			_id: items.snippet.resourceId.videoId,
