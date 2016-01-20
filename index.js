@@ -128,7 +128,7 @@ function processShow(arr) {
 
 function processList(arr) {
 
-	function hiRes() {
+	function hiRes(items) {
 		if (items.snippet.thumbnails.maxres.url == null) {
 			return items.snippet.thumbnails.high.url;
 		} else {
@@ -145,7 +145,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: hiRes()
+			thumbLg: hiRes(items)
 		}
 	});
 };
