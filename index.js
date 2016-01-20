@@ -130,9 +130,8 @@ function processList(arr) {
 
 	return arr.map(function(items) {
 	
-		function hiRes(items) {
-			if (!("maxres" in items)) {
-				debugger;
+		function hiRes(img) {
+			if (!("maxres" in img)) {
 				return items.snippet.thumbnails.high.url;
 			} else {
 				return items.snippet.thumbnails.maxres.url;
@@ -147,7 +146,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: hiRes(items)
+			thumbLg: hiRes(this)
 		}
 	});
 };
