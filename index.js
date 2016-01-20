@@ -134,7 +134,7 @@ function processList(arr) {
 		} else {
 			return items.snippet.thumbnails.maxres.url;
 		}
-	},
+	}
 
 	return arr.map(function(items) {
 		return {
