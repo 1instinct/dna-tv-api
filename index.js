@@ -132,6 +132,7 @@ function processList(arr) {
 	
 		function hiRes(items) {
 			if (!("maxres" in items)) {
+				debugger;
 				return items.snippet.thumbnails.high.url;
 			} else {
 				return items.snippet.thumbnails.maxres.url;
