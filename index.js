@@ -131,10 +131,10 @@ function processList(arr) {
 	return arr.map(function(items) {
 	
 		function hiRes(img) {
-			if (("items.snippet.thumbnails.maxres" in img) == false) {
-				return items.snippet.thumbnails.high.url;
-			} else {
+			if (("items.snippet.thumbnails.maxres" in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
+			} else {
+				return items.snippet.thumbnails.high.url;
 			}
 		}
 
