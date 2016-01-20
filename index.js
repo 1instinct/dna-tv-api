@@ -130,13 +130,13 @@ function processList(arr) {
 
 	return arr.map(function(items) {
 	
-		// function hiRes(img) {
-		// 	if (("maxres" in img) == true) {
-		// 		return items.snippet.thumbnails.maxres.url;
-		// 	} else {
-		// 		return items.snippet.thumbnails.high.url;
-		// 	}
-		// }
+		function hiRes(img) {
+			if (("maxres" in img) == true) {
+				return items.snippet.thumbnails.maxres.url;
+			} else {
+				return items.snippet.thumbnails.high.url;
+			}
+		}
 
 		return {
 			url: items.snippet.resourceId.videoId,
@@ -146,8 +146,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			// thumbLg: hiRes(items.snippet.thumbnails)
-			thumbLg: items.snippet.thumbnails.maxres.url
+			thumbLg: hiRes(items.snippet.thumbnails)
 		}
 	});
 };
