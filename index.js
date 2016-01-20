@@ -48,7 +48,8 @@ var express = require('express'),
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
-	latestWithViewCount = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='++'&key='+apiKey;
+	// Latest w/ View Count
+	// latestWithViewCount = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='++'&key='+apiKey;
 
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
 	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
