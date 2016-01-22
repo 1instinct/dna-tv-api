@@ -146,7 +146,7 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			list: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: hiRes(items.snippet.thumbnails)
+			hero: hiRes(items.snippet.thumbnails)
 			// thumbLg: items.snippet.thumbnails.maxres.url
 		}
 	});
