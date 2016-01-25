@@ -152,6 +152,31 @@ function processList(arr) {
 	});
 };
 
+function processFeat(arr) {
+
+	return arr.map(function(items) {
+	
+		// function hiRes(img) {
+		// 	if (('maxres' in img) == true) {
+		// 		return items.snippet.thumbnails.maxres.url;
+		// 	} else {
+		// 		return items.snippet.thumbnails.high.url;
+		// 	}
+		// }
+
+		return {
+			url: items.snippet.resourceId.videoId,
+			_id: items.snippet.resourceId.videoId,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			date: items.snippet.publishedAt,
+			listId: items.snippet.playlistId,
+			// hero: hiRes(items.snippet.thumbnails)
+			hero: items.snippet.thumbnails.high.url
+		}
+	});
+};
+
 function processOther(arr) {
 	return arr.map(function(items) {
 		return {
@@ -204,7 +229,7 @@ app.get('/featured', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var featured = processList(response.body.items);
+			var featured = processFeat(response.body.items);
 			res.status(200).send(featured);
 		}
 	});
