@@ -152,27 +152,40 @@ function processList(arr) {
 	});
 };
 
-function processFeat(arr) {
+function processFeatured(arr) {
 
 	return arr.map(function(items) {
 	
-		// function hiRes(img) {
-		// 	if (('maxres' in img) == true) {
-		// 		return items.snippet.thumbnails.maxres.url;
-		// 	} else {
-		// 		return items.snippet.thumbnails.high.url;
-		// 	}
-		// }
+		function hiRes(img) {
+			if (('maxres' in img) == true) {
+				return items.snippet.thumbnails.maxres.url;
+			} else {
+				return items.snippet.thumbnails.high.url;
+			}
+		}
 
+		return {
+			url: items.snippet.resourceId.videoId,
+			_id: items.snippet.resourceId.videoId,
+			featured: true,
+			hero: hiRes(items.snippet.thumbnails)
+			// hero: items.snippet.thumbnails.high.url
+		}
+	});
+};
+
+function processExclusives(arr) {
+
+	return arr.map(function(items) {
 		return {
 			url: items.snippet.resourceId.videoId,
 			_id: items.snippet.resourceId.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
+			exclusives: true,
 			listId: items.snippet.playlistId,
-			// hero: hiRes(items.snippet.thumbnails)
-			hero: items.snippet.thumbnails.high.url
+			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
 	});
 };
@@ -229,7 +242,7 @@ app.get('/featured', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var featured = processFeat(response.body.items);
+			var featured = processFeatured(response.body.items);
 			res.status(200).send(featured);
 		}
 	});
@@ -349,7 +362,7 @@ app.get('/exclusives', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var exclusives = processOther(response.body.items);
+			var exclusives = processExclusives(response.body.items);
 			res.status(200).send(exclusives);
 		}
 	});
