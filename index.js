@@ -147,7 +147,7 @@ function processList(arr) {
 			listId: items.snippet.playlistId,
 			thumb: items.snippet.thumbnails.medium.url,
 			// hero: hiRes(items.snippet.thumbnails)
-			hero: items.snippet.thumbnails.maxres.url
+			hero: items.snippet.thumbnails.high.url
 		}
 	});
 };
