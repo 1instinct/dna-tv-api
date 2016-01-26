@@ -189,7 +189,7 @@ function processExclusives(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			exclusives: true,
+			exclusive: true,
 			listId: items.snippet.playlistId,
 			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
