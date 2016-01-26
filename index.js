@@ -94,6 +94,23 @@ function process(arr) {
 	});
 };
 
+function processLatest(arr) {
+	return arr.map(function(items) {
+		return {
+			url: items.id,
+			_id: items.id,
+			title: items.snippet.title,
+			desc: items.snippet.description,
+			date: items.snippet.publishedAt,
+			thumb: items.snippet.thumbnails.medium.url,
+
+			views: items.statistics.viewCount,
+			likes: items.statistics.likeCount,
+			tags: items.snippet.tags
+		}
+	});
+};
+
 function processIds(arr) {
 	return arr.map(function(items) {
 		return {
@@ -249,7 +266,8 @@ app.get('/mostPopular', function (req, res) {
 			var theLatest = processIds(response.body.items),
 				str = ConvertToCSV(theLatest),
 				ids = str.replace(/\s+/g, ","),
-				latestWithViewCount = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
+				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
+				latestWithViewCount = processLatest(response.body.items);
 
 			res.status(200).send(latestWithViewCount);
 		}
