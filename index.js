@@ -270,8 +270,8 @@ app.get('/mostPopular', function (req, res) {
 
 			request.get(vidQuery).end(function(whoops,success) {
 				if (whoops) {
-					console.log(whoops);
-					return whoops;
+					setTimeout(get, 100);
+					return;
 				} else {
 					success = processLatest(success.body.items);
 					return success;
