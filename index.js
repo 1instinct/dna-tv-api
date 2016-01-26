@@ -102,12 +102,11 @@ function processLatest(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
+			thumb: items.snippet.thumbnails.medium.url,
 
 			views: items.statistics.viewCount,
 			likes: items.statistics.likeCount,
-			tags: items.snippet.tags,
-
-			thumb: items.snippet.thumbnails.medium.url
+			tags: items.snippet.tags
 		}
 	});
 };
@@ -267,8 +266,17 @@ app.get('/mostPopular', function (req, res) {
 			var theLatest = processIds(response.body.items),
 				str = ConvertToCSV(theLatest),
 				ids = str.replace(/\s+/g, ","),
-				vidQuery = request.get('https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s').end(function(err,res) {if(err){return;} else {return res;}},
-				latestWithViewCount = processLatest(response.body.items);
+				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
+
+			request.get(vidQuery).end(function(whoops,success) {
+				if (whoops) {
+					console.log(whoops);
+					return whoops;
+				} else {
+					latestWithViewCount = processLatest(success.body.items);
+					return latestWithViewCount;
+				}
+			});
 
 			res.status(200).send(latestWithViewCount);
 		}
