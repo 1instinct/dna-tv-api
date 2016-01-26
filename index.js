@@ -102,11 +102,12 @@ function processLatest(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url,
 
 			views: items.statistics.viewCount,
 			likes: items.statistics.likeCount,
-			tags: items.snippet.tags
+			tags: items.snippet.tags,
+
+			thumb: items.snippet.thumbnails.medium.url
 		}
 	});
 };
