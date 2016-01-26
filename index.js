@@ -262,23 +262,15 @@ app.get('/mostPopular', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
+
 			// Latest w/ View Count
 			var theLatest = processIds(response.body.items),
 				str = ConvertToCSV(theLatest),
 				ids = str.replace(/\s+/g, ","),
-				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
+				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
+				latestWithViewCount = processLatest(response.body.items);
 
-			request.get(vidQuery).end(function(whoops,success) {
-				if (whoops) {
-					setTimeout(get, 100);
-					return;
-				} else {
-					success = processLatest(success.body.items);
-					return success;
-				}
-			});
-
-			res.status(200).send(success);
+			res.status(200).send(latestWithViewCount);
 		}
 	});
 });
