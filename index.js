@@ -273,12 +273,12 @@ app.get('/mostPopular', function (req, res) {
 					console.log(whoops);
 					return whoops;
 				} else {
-					latestWithViewCount = processLatest(success.body.items);
-					return latestWithViewCount;
+					success = processLatest(success.body.items);
+					return success;
 				}
 			});
 
-			res.status(200).send(latestWithViewCount);
+			res.status(200).send(success);
 		}
 	});
 });
