@@ -23,7 +23,7 @@ var express = require('express'),
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
 	listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
 	listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
-	listExclusives = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
+	listSpecials = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
 
 	accessToken = '1/Dt5cBhLxKG_EjyWZxYEJ7oADupiaJmrl_G_846BZ1mZIgOrJDtdun6zK6XiATCKT',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
@@ -55,7 +55,7 @@ var express = require('express'),
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
 	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
 	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey,
-	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey;
+	specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
 
 cloudinary.config({ 
   cloud_name: 'galore', 
@@ -180,7 +180,7 @@ function processFeatured(arr) {
 	});
 };
 
-function processExclusives(arr) {
+function processSpecials(arr) {
 
 	return arr.map(function(items) {
 		return {
@@ -189,7 +189,7 @@ function processExclusives(arr) {
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			exclusive: true,
+			special: true,
 			listId: items.snippet.playlistId,
 			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
 		}
@@ -371,14 +371,14 @@ app.get('/bombshells', function (req, res) {
 	});
 });
 
-app.get('/exclusives', function (req, res) {
-	request.get(exclusives).end(function(err,response) {
+app.get('/specials', function (req, res) {
+	request.get(specials).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var exclusives = processExclusives(response.body.items);
-			res.status(200).send(exclusives);
+			var specials = processSpecials(response.body.items);
+			res.status(200).send(specials);
 		}
 	});
 });
