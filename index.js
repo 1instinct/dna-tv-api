@@ -315,7 +315,7 @@ app.get('/askPush', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var askPush = processList(response.body.items);
+			var askPush = processOther(response.body.items);
 			res.status(200).send(askPush);
 		}
 	});
