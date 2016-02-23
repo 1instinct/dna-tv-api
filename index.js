@@ -63,7 +63,7 @@ var express = require('express'),
 	model20 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listModel20+'&key='+apiKey,
 	teachMe = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listTeachMe+'&key='+apiKey,
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
-	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
+	// inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
 	bombshellOnStreet = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshellOnStreet+'&key='+apiKey;
 	// specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
 
@@ -95,7 +95,7 @@ function process(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
-			_id: items.id.videoId,
+			// _id: items.id.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -108,7 +108,7 @@ function processLatest(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id,
-			_id: items.id,
+			// _id: items.id,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -133,7 +133,7 @@ function processShow(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id,
-			_id: items.id,
+			// _id: items.id,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -156,7 +156,7 @@ function processList(arr) {
 
 		return {
 			url: items.snippet.resourceId.videoId,
-			_id: items.snippet.resourceId.videoId,
+			// _id: items.snippet.resourceId.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -182,7 +182,7 @@ function processFeatured(arr) {
 
 		return {
 			url: items.snippet.resourceId.videoId,
-			_id: items.snippet.resourceId.videoId,
+			// _id: items.snippet.resourceId.videoId,
 			featured: true,
 			hero: hiRes(items.snippet.thumbnails)
 			// hero: items.snippet.thumbnails.high.url
@@ -195,7 +195,7 @@ function processSpecials(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.snippet.resourceId.videoId,
-			_id: items.snippet.resourceId.videoId,
+			// _id: items.snippet.resourceId.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -210,7 +210,7 @@ function processOther(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.snippet.resourceId.videoId,
-			_id: items.snippet.resourceId.videoId,
+			// _id: items.snippet.resourceId.videoId,
 			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
@@ -357,17 +357,17 @@ app.get('/girls', function (req, res) {
 	});
 });
 
-app.get('/inBed', function (req, res) {
-	request.get(inBed).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
-			var inBed = processList(response.body.items);
-			res.status(200).send(inBed);
-		}
-	});
-});
+// app.get('/inBed', function (req, res) {
+// 	request.get(inBed).end(function(err,response) {
+// 		if (err) {
+// 			console.log(err);
+// 			res.status(404).send(err);
+// 		} else {
+// 			var inBed = processList(response.body.items);
+// 			res.status(200).send(inBed);
+// 		}
+// 	});
+// });
 
 app.get('/bombshells', function (req, res) {
 	request.get(bombshells).end(function(err,response) {
