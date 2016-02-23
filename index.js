@@ -23,7 +23,7 @@ var express = require('express'),
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
 	listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
 	listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
-	listSpecials = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
+	listEtc = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
 
 	accessToken = '1/Dt5cBhLxKG_EjyWZxYEJ7oADupiaJmrl_G_846BZ1mZIgOrJDtdun6zK6XiATCKT',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
@@ -55,7 +55,7 @@ var express = require('express'),
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
 	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
 	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey,
-	specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
+	etcetera = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listEtc+'&key='+apiKey;
 
 cloudinary.config({ 
   cloud_name: 'galore', 
@@ -180,7 +180,7 @@ function processFeatured(arr) {
 	});
 };
 
-function processSpecials(arr) {
+function processEtc(arr) {
 
 	return arr.map(function(items) {
 		return {
@@ -371,14 +371,14 @@ app.get('/bombshells', function (req, res) {
 	});
 });
 
-app.get('/specials', function (req, res) {
-	request.get(specials).end(function(err,response) {
+app.get('/etcetera', function (req, res) {
+	request.get(etcetera).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var specials = processSpecials(response.body.items);
-			res.status(200).send(specials);
+			var etcetera = processEtc(response.body.items);
+			res.status(200).send(etcetera);
 		}
 	});
 });
