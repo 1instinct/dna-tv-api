@@ -411,7 +411,7 @@ app.get('/exclusives', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var exclusives = processList(response.body.items);
+			var exclusives = processOther(response.body.items);
 			res.status(200).send(exclusives);
 		}
 	});
