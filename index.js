@@ -15,15 +15,20 @@ var express = require('express'),
 	listVintage4 = 'PLPp3tIzLUEwaWgJtRGfkzkSot2ELUCR-l',
 	listVintage5 = 'PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD',
 
+	listExclusives = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
+	listOriginals = 'PLx0X0-cKhSOAwWv_GDzenSU3y4WmJn680',
 	listFeatured = 'PLx0X0-cKhSOBYY6KXhQZg4dmK5pyGQk-o',
+	listEtc = 'PLx0X0-cKhSOAuD8lqX9DGewYhdRehcqJ4',
 	listLiveFrom = 'PLx0X0-cKhSOChWAkkEvSDv1nWfdIzXr9M',
+	listBombshellOnStreet = 'PLx0X0-cKhSOC1xblQxSnkTW1BNVmoLUzX',
+	listUncovered = 'PLx0X0-cKhSOA7Iz8dGPW7Y5s6o2UKuEyX',
 	listAskPush = 'PLx0X0-cKhSOAgUD3PjNTnEh4Unqgz1MxL',
 	listModel20 = 'PLx0X0-cKhSOAnlBpACK4BF2zR1MAZ4vLY',
 	listTeachMe = 'PLx0X0-cKhSOCCIGzz4vEy-KVhJ5JYuTFQ',
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
-	listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
-	listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
-	listSpecials = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
+	// listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
+	// listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
+	// listSpecials = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
 
 	accessToken = '1/Dt5cBhLxKG_EjyWZxYEJ7oADupiaJmrl_G_846BZ1mZIgOrJDtdun6zK6XiATCKT',
 	apiKey = 'AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
@@ -32,7 +37,7 @@ var express = require('express'),
 	featured = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listFeatured+'&key='+apiKey,
 	shows = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId='+chanID+'&key='+apiKey+'&maxResults='+maxResults,
 	theLatest = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=date&maxResults='+maxResults,
-	mostPopular = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=viewCount&maxResults='+maxResults,
+	// mostPopular = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet&order=viewCount&maxResults='+maxResults,
 
 // Get Playlists by Channel Id
 // https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s&maxResults=33
@@ -44,18 +49,23 @@ var express = require('express'),
 // Galore TV 3
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 4
-	vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listVintage4+'&key='+apiKey,
+	vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listVintage3+'&key='+apiKey,
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
+	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey,
+	originals = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listOriginals+'&key='+apiKey,
+	etc = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listEtc+'&key='+apiKey,
+	
+	uncovered = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listUncovered+'&key='+apiKey,
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
 	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
 	model20 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listModel20+'&key='+apiKey,
 	teachMe = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listTeachMe+'&key='+apiKey,
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
 	inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
-	bombshells = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshells+'&key='+apiKey,
-	specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
+	bombshellOnStreet = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshellOnStreet+'&key='+apiKey;
+	// specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
 
 cloudinary.config({ 
   cloud_name: 'galore', 
@@ -256,24 +266,24 @@ app.get('/featured', function (req, res) {
 	});
 });
 
-app.get('/mostPopular', function (req, res) {
-	request.get(theLatest).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
+// app.get('/mostPopular', function (req, res) {
+// 	request.get(theLatest).end(function(err,response) {
+// 		if (err) {
+// 			console.log(err);
+// 			res.status(404).send(err);
+// 		} else {
 
-			// Latest w/ View Count
-			var theLatest = processIds(response.body.items),
-				str = ConvertToCSV(theLatest),
-				ids = str.replace(/\s+/g, ","),
-				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
-				latestWithViewCount = processLatest(response.body.items);
+// 			// Latest w/ View Count
+// 			var theLatest = processIds(response.body.items),
+// 				str = ConvertToCSV(theLatest),
+// 				ids = str.replace(/\s+/g, ","),
+// 				vidQuery = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id='+ids+'&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s',
+// 				latestWithViewCount = processLatest(response.body.items);
 
-			res.status(200).send(latestWithViewCount);
-		}
-	});
-});
+// 			res.status(200).send(latestWithViewCount);
+// 		}
+// 	});
+// });
 
 app.get('/vintage', function (req, res) {
 	request.get(vintage).end(function(err,response) {
@@ -371,17 +381,77 @@ app.get('/bombshells', function (req, res) {
 	});
 });
 
-app.get('/specials', function (req, res) {
-	request.get(specials).end(function(err,response) {
+app.get('/originals', function (req, res) {
+	request.get(originals).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var specials = processSpecials(response.body.items);
-			res.status(200).send(specials);
+			var originals = processList(response.body.items);
+			res.status(200).send(originals);
 		}
 	});
 });
+
+app.get('/etc', function (req, res) {
+	request.get(etc).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var etc = processList(response.body.items);
+			res.status(200).send(etc);
+		}
+	});
+});
+
+app.get('/exclusives', function (req, res) {
+	request.get(exclusives).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var exclusives = processList(response.body.items);
+			res.status(200).send(exclusives);
+		}
+	});
+});
+
+app.get('/uncovered', function (req, res) {
+	request.get(uncovered).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var uncovered = processList(response.body.items);
+			res.status(200).send(uncovered);
+		}
+	});
+});
+
+app.get('/bombshellOnStreet', function (req, res) {
+	request.get(bombshellOnStreet).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var bombshellOnStreet = processList(response.body.items);
+			res.status(200).send(bombshellOnStreet);
+		}
+	});
+});
+
+// app.get('/specials', function (req, res) {
+// 	request.get(specials).end(function(err,response) {
+// 		if (err) {
+// 			console.log(err);
+// 			res.status(404).send(err);
+// 		} else {
+// 			var specials = processSpecials(response.body.items);
+// 			res.status(200).send(specials);
+// 		}
+// 	});
+// });
 
 var server = app.listen(port, function () {
   var host = server.address().address;
