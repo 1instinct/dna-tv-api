@@ -182,6 +182,7 @@ function processFeatured(arr) {
 
 		return {
 			url: items.snippet.resourceId.videoId,
+			title: items.snippet.title,
 			// _id: items.snippet.resourceId.videoId,
 			featured: true,
 			hero: hiRes(items.snippet.thumbnails)
