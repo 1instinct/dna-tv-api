@@ -154,6 +154,18 @@ function processList(arr) {
 
 	return arr.map(function(items) {
 
+		function hiRes(img) {
+			if (('maxres' in img) == true) {
+				return items.snippet.thumbnails.maxres.url;
+			} else if {
+				return items.snippet.thumbnails.high.url;
+			} else if {
+				return items.snippet.thumbnails.medium.url;
+			} else {
+				return items.snippet.thumbnails.default.url;
+			}
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
@@ -161,7 +173,8 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: items.snippet.thumbnails.default.url
+			thumb: hiRes(items.snippet.thumbnails)
+			// thumb: items.snippet.thumbnails.default.url
 			// hero: hiRes(items.snippet.thumbnails)
 			// hero: items.snippet.thumbnails.high.url
 		}
