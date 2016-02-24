@@ -157,9 +157,9 @@ function processList(arr) {
 		function hiRes(img) {
 			if (('maxres' in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
-			} else if {
+			} else if (('high' in img) == true) {
 				return items.snippet.thumbnails.high.url;
-			} else if {
+			} else if (('medium' in img) == true) {
 				return items.snippet.thumbnails.medium.url;
 			} else {
 				return items.snippet.thumbnails.default.url;
