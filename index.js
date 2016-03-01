@@ -132,6 +132,16 @@ function processIds(arr) {
 
 function processShow(arr) {
 	return arr.map(function(items) {
+
+		function makeSlug(title) {
+		    var str = title;
+		        str = str.replace(/[^a-zA-Z0-9\s]/g,"");
+		        str = str.toLowerCase();
+		        str = str.replace(/\s/g,'-');
+		        str = str.replace(/^-+|-+$|(-)+/g, '$1');
+		        return str;
+		}
+
 		return {
 			url: items.id,
 			// _id: items.id,
@@ -145,8 +155,8 @@ function processShow(arr) {
 			// 		return items.snippet.thumbnails.maxres.url;
 			// 	}
 			// }
-			thumb: cloudinary.url("Galore TV Shows/"+items.snippet.title+".jpg", {dpr: 2.0, secure: true, width: 320, height: 180, crop: 'fill'}),
-			thumbLg: cloudinary.url("Galore TV Shows/"+items.snippet.title+".jpg", {dpr: 2.0, secure: true, width: 1280, height: 720, crop: 'fill'})
+			thumb: cloudinary.url("Galore TV Shows/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 320, height: 180, crop: 'fill'}),
+			thumbLg: cloudinary.url("Galore TV Shows/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 1280, height: 720, crop: 'fill'})
 		}
 	});
 };
