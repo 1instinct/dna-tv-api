@@ -186,8 +186,7 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			// thumb: hiRes(items.snippet.thumbnails)
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
+			thumb: hiRes(items.snippet.thumbnails)
 			// thumb: items.snippet.thumbnails.default.url
 			// hero: hiRes(items.snippet.thumbnails)
 			// hero: items.snippet.thumbnails.high.url
