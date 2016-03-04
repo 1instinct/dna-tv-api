@@ -168,6 +168,8 @@ function processList(arr) {
 		function hiRes(img) {
 			if (('maxres' in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
+			} else if (('standard' in img) == true) {
+				return items.snippet.thumbnails.standard.url;
 			} else if (('high' in img) == true) {
 				return items.snippet.thumbnails.high.url;
 			} else if (('medium' in img) == true) {
@@ -184,7 +186,8 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: hiRes(items.snippet.thumbnails)
+			// thumb: hiRes(items.snippet.thumbnails)
+			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
 			// thumb: items.snippet.thumbnails.default.url
 			// hero: hiRes(items.snippet.thumbnails)
 			// hero: items.snippet.thumbnails.high.url
