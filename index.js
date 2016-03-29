@@ -395,14 +395,14 @@ app.get('/girls', function (req, res) {
 // 	});
 // });
 
-app.get('/bombshells', function (req, res) {
-	request.get(bombshells).end(function(err,response) {
+app.get('/bombshellOneStreet', function (req, res) {
+	request.get(bombshellOnStreet).end(function(err,response) {
 		if (err) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var bombshells = processList(response.body.items);
-			res.status(200).send(bombshells);
+			var bombshellOnStreet = processList(response.body.items);
+			res.status(200).send(bombshellOnStreet);
 		}
 	});
 });
