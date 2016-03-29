@@ -81,6 +81,15 @@ cloudinary.config({
   api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY'
 });
 
+pingdomApi.getChecks({
+  target: 'someCheckId',
+  qs: {
+    limit: 10
+  }
+}, function (err, checks, response){
+  console.log(err, checks);
+});
+
 function ConvertToCSV(objArray) {
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
     var str = '';
@@ -401,18 +410,6 @@ app.get('/girls', function (req, res) {
 // 		}
 // 	});
 // });
-
-app.get('/bombshellOneStreet', function (req, res) {
-	request.get(bombshellOnStreet).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
-			var bombshellOnStreet = processList(response.body.items);
-			res.status(200).send(bombshellOnStreet);
-		}
-	});
-});
 
 app.get('/originals', function (req, res) {
 	request.get(originals).end(function(err,response) {
