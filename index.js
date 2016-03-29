@@ -57,7 +57,7 @@ var express = require('express'),
 	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey,
 	originals = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listOriginals+'&key='+apiKey,
 	etc = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listEtc+'&key='+apiKey,
-	
+
 	uncovered = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listUncovered+'&key='+apiKey,
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
 	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
@@ -68,10 +68,10 @@ var express = require('express'),
 	bombshellOnStreet = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshellOnStreet+'&key='+apiKey;
 	// specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
 
-cloudinary.config({ 
-  cloud_name: 'galore', 
-  api_key: '789423776114718', 
-  api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY' 
+cloudinary.config({
+  cloud_name: 'galore',
+  api_key: '789423776114718',
+  api_secret: 'BXCCmMwEuhohSFCpz7QL-gUV3oY'
 });
 
 function ConvertToCSV(objArray) {
@@ -197,7 +197,7 @@ function processList(arr) {
 function processFeatured(arr) {
 
 	return arr.map(function(items) {
-	
+
 		function hiRes(img) {
 			if (('maxres' in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
@@ -247,6 +247,7 @@ function processOther(arr) {
 	});
 };
 
+debugger;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
