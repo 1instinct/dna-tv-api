@@ -1,4 +1,11 @@
-var express = require('express'),
+var pingdomApi = require('pingdom-api')({
+    user: 'aaron@galoremag.com',
+    pass: 'Sm0lktis!',
+    appkey: 'ji2zs0uh04olzkfhgc6l6h2r1qe6essq'
+    //accountEmail: 'optional' // the account on which to perform the request (optional)
+	}),
+
+	express = require('express'),
 	app = express(),
 
 	request = require('superagent'),
