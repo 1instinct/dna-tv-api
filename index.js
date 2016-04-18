@@ -316,7 +316,7 @@ app.get('/vintage', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var vintage = processList(response.body.items);
+			var vintage = processOther(response.body.items);
 			res.status(200).send(vintage);
 		}
 	});
@@ -352,7 +352,7 @@ app.get('/model20', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var model20 = processList(response.body.items);
+			var model20 = processOther(response.body.items);
 			res.status(200).send(model20);
 		}
 	});
@@ -364,7 +364,7 @@ app.get('/teachMe', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var teachMe = processList(response.body.items);
+			var teachMe = processOther(response.body.items);
 			res.status(200).send(teachMe);
 		}
 	});
@@ -376,7 +376,7 @@ app.get('/girls', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var girls = processList(response.body.items);
+			var girls = processOther(response.body.items);
 			res.status(200).send(girls);
 		}
 	});
@@ -388,7 +388,7 @@ app.get('/girls', function (req, res) {
 // 			console.log(err);
 // 			res.status(404).send(err);
 // 		} else {
-// 			var inBed = processList(response.body.items);
+// 			var inBed = processOther(response.body.items);
 // 			res.status(200).send(inBed);
 // 		}
 // 	});
@@ -400,7 +400,7 @@ app.get('/bombshellOneStreet', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var bombshellOnStreet = processList(response.body.items);
+			var bombshellOnStreet = processOther(response.body.items);
 			res.status(200).send(bombshellOnStreet);
 		}
 	});
@@ -412,7 +412,7 @@ app.get('/originals', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var originals = processList(response.body.items);
+			var originals = processOther(response.body.items);
 			res.status(200).send(originals);
 		}
 	});
@@ -424,7 +424,7 @@ app.get('/etc', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var etc = processList(response.body.items);
+			var etc = processOther(response.body.items);
 			res.status(200).send(etc);
 		}
 	});
@@ -448,7 +448,7 @@ app.get('/uncovered', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var uncovered = processList(response.body.items);
+			var uncovered = processOther(response.body.items);
 			res.status(200).send(uncovered);
 		}
 	});
@@ -460,7 +460,7 @@ app.get('/bombshellOnStreet', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var bombshellOnStreet = processList(response.body.items);
+			var bombshellOnStreet = processOther(response.body.items);
 			res.status(200).send(bombshellOnStreet);
 		}
 	});
