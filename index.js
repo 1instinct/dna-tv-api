@@ -174,8 +174,10 @@ function processList(arr) {
 				return items.snippet.thumbnails.high.url;
 			} else if ("medium" in img) {
 				return items.snippet.thumbnails.medium.url;
-			} else {
+			} else if ("default" in img) {
 				return items.snippet.thumbnails.default.url;
+			} else {
+				hiRes;
 			}
 		}
 
