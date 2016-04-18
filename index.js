@@ -165,14 +165,14 @@ function processList(arr) {
 
 	return arr.map(function(items) {
 
-		function hiRes(img) {
-			if (('maxres' in img) == true) {
+		function hiRes() {
+			if ("maxres" in items.snippet.thumbnails) {
 				return items.snippet.thumbnails.maxres.url;
-			} else if (('standard' in img) == true) {
+			} else if ("standard" in items.snippet.thumbnails) {
 				return items.snippet.thumbnails.standard.url;
-			} else if (('high' in img) == true) {
+			} else if ("high" in items.snippet.thumbnails) {
 				return items.snippet.thumbnails.high.url;
-			} else if (('medium' in img) == true) {
+			} else if ("medium" in items.snippet.thumbnails) {
 				return items.snippet.thumbnails.medium.url;
 			} else {
 				return items.snippet.thumbnails.default.url;
@@ -186,7 +186,7 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: hiRes(items.snippet.thumbnails)
+			thumb: hiRes()
 			// thumb: items.snippet.thumbnails.default.url
 			// hero: hiRes(items.snippet.thumbnails)
 			// hero: items.snippet.thumbnails.high.url
