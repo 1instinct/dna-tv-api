@@ -188,7 +188,7 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: hiRes(items)
+			thumb: hiRes(items.snippet.thumbnails)
 		}
 	});
 };
