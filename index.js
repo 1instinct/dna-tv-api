@@ -177,7 +177,7 @@ function processList(arr) {
 			} else if ("default" in img) {
 				return items.snippet.thumbnails.default.url;
 			} else {
-				hiRes;
+				hiRes(img);
 			}
 		}
 
@@ -189,9 +189,6 @@ function processList(arr) {
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
 			thumb: hiRes(items)
-			// thumb: items.snippet.thumbnails.default.url
-			// hero: hiRes(items.snippet.thumbnails)
-			// hero: items.snippet.thumbnails.high.url
 		}
 	});
 };
