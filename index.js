@@ -328,7 +328,7 @@ app.get('/liveFrom', function (req, res) {
 			console.log(err);
 			res.status(404).send(err);
 		} else {
-			var liveFrom = processList(response.body.items);
+			var liveFrom = processOther(response.body.items);
 			res.status(200).send(liveFrom);
 		}
 	});
