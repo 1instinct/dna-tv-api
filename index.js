@@ -155,8 +155,8 @@ function processShow(arr) {
 			// 		return items.snippet.thumbnails.maxres.url;
 			// 	}
 			// }
-			thumb: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 320, height: 180, crop: 'fill'}),
-			thumbLg: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 1280, height: 720, crop: 'fill'})
+			thumb: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 320, height: 180, crop: 'fill', flags: ["lossy", "progressive"], quality: 70, fetch_format: "auto"}),
+			thumbLg: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 1280, height: 720, crop: 'fill', flags: ["lossy", "progressive"], quality: 70, fetch_format: "auto"})
 		}
 	});
 };
