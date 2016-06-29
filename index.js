@@ -23,7 +23,7 @@ var express = require('express'),
 	listLiveFrom = 'PLx0X0-cKhSOChWAkkEvSDv1nWfdIzXr9M',
 	listBombshellOnStreet = 'PLx0X0-cKhSOC1xblQxSnkTW1BNVmoLUzX',
 	listUncovered = 'PLx0X0-cKhSOA7Iz8dGPW7Y5s6o2UKuEyX',
-	listAskPush = 'PLx0X0-cKhSOAgUD3PjNTnEh4Unqgz1MxL',
+	// listAskPush = 'PLx0X0-cKhSOAgUD3PjNTnEh4Unqgz1MxL',
 	listModel20 = 'PLx0X0-cKhSOAnlBpACK4BF2zR1MAZ4vLY',
 	listTeachMe = 'PLx0X0-cKhSOCCIGzz4vEy-KVhJ5JYuTFQ',
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
@@ -60,7 +60,7 @@ var express = require('express'),
 
 	uncovered = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listUncovered+'&key='+apiKey,
 	liveFrom = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listLiveFrom+'&key='+apiKey,
-	askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
+	// askPush = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listAskPush+'&key='+apiKey,
 	model20 = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listModel20+'&key='+apiKey,
 	teachMe = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listTeachMe+'&key='+apiKey,
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
@@ -334,17 +334,17 @@ app.get('/liveFrom', function (req, res) {
 	});
 });
 
-app.get('/askPush', function (req, res) {
-	request.get(askPush).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
-			var askPush = processOther(response.body.items);
-			res.status(200).send(askPush);
-		}
-	});
-});
+// app.get('/askPush', function (req, res) {
+// 	request.get(askPush).end(function(err,response) {
+// 		if (err) {
+// 			console.log(err);
+// 			res.status(404).send(err);
+// 		} else {
+// 			var askPush = processOther(response.body.items);
+// 			res.status(200).send(askPush);
+// 		}
+// 	});
+// });
 
 app.get('/model20', function (req, res) {
 	request.get(model20).end(function(err,response) {
