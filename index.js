@@ -15,7 +15,7 @@ var express = require('express'),
 	GaloreTV4 = 'PLPp3tIzLUEwaWgJtRGfkzkSot2ELUCR-l',
 	GaloreTV5 = 'PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD',
 
-	listVintage = 'PLx0X0-cKhSOAqvmUTwsHVTYGLuQjhQcnF',
+	// listVintage = 'PLx0X0-cKhSOAqvmUTwsHVTYGLuQjhQcnF',
 	listExclusives = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
 	listOriginals = 'PLx0X0-cKhSOAwWv_GDzenSU3y4WmJn680',
 	listFeatured = 'PLx0X0-cKhSOBYY6KXhQZg4dmK5pyGQk-o',
@@ -50,7 +50,7 @@ var express = require('express'),
 // Galore TV 3
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 4
-	vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listVintage+'&key='+apiKey,
+	// vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listVintage+'&key='+apiKey,
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
@@ -310,17 +310,17 @@ app.get('/featured', function (req, res) {
 // 	});
 // });
 
-app.get('/vintage', function (req, res) {
-	request.get(vintage).end(function(err,response) {
-		if (err) {
-			console.log(err);
-			res.status(404).send(err);
-		} else {
-			var vintage = processOther(response.body.items);
-			res.status(200).send(vintage);
-		}
-	});
-});
+// app.get('/vintage', function (req, res) {
+// 	request.get(vintage).end(function(err,response) {
+// 		if (err) {
+// 			console.log(err);
+// 			res.status(404).send(err);
+// 		} else {
+// 			var vintage = processOther(response.body.items);
+// 			res.status(200).send(vintage);
+// 		}
+// 	});
+// });
 
 app.get('/liveFrom', function (req, res) {
 	request.get(liveFrom).end(function(err,response) {
