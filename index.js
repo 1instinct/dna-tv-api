@@ -92,12 +92,17 @@ function ConvertToCSV(objArray) {
     return str;
 };
 
+function cleanTitle(title) {
+	var cleanTitle = title;
+			cleanTitle = cleanTitle.replace(" | Galore TV","");
+}
+
 function process(arr) {
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
 			// _id: items.id.videoId,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url
@@ -110,7 +115,7 @@ function processLatest(arr) {
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url,
@@ -145,7 +150,7 @@ function processShow(arr) {
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			// thumb: function switcher() {
@@ -184,7 +189,7 @@ function processList(arr) {
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
@@ -207,7 +212,7 @@ function processFeatured(arr) {
 
 		return {
 			url: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			// _id: items.snippet.resourceId.videoId,
 			featured: true,
 			hero: hiRes(items.snippet.thumbnails)
@@ -222,7 +227,7 @@ function processSpecials(arr) {
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			special: true,
@@ -237,7 +242,7 @@ function processOther(arr) {
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: cleanTitle(items.snippet.title),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
