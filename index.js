@@ -93,9 +93,13 @@ function ConvertToCSV(objArray) {
 };
 
 function process(arr) {
-	return arr.map(function(items) {
+	ret
+	function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+	urn arr.map(function(items) {
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -110,9 +114,13 @@ function process(arr) {
 };
 
 function processLatest(arr) {
-	return arr.map(function(items) {
+	ret
+	function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+	urn arr.map(function(items) {
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -150,8 +158,12 @@ function processShow(arr) {
 		        return str;
 		}
 
+		function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -193,8 +205,12 @@ function processList(arr) {
 			}
 		}
 
+		function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -221,8 +237,12 @@ function processFeatured(arr) {
 			}
 		}
 
+		function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -240,8 +260,12 @@ function processSpecials(arr) {
 
 	return arr.map(function(items) {
 
+		function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
@@ -260,8 +284,12 @@ function processSpecials(arr) {
 function processOther(arr) {
 	return arr.map(function(items) {
 
+		function escapeRegExp(str) {
+		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		}
+
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find), replace);
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
 
 		return {
