@@ -94,10 +94,14 @@ function ConvertToCSV(objArray) {
 
 function process(arr) {
 	return arr.map(function(items) {
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.id.videoId,
 			// _id: items.id.videoId,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url
@@ -107,10 +111,14 @@ function process(arr) {
 
 function processLatest(arr) {
 	return arr.map(function(items) {
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url,
@@ -142,10 +150,14 @@ function processShow(arr) {
 		        return str;
 		}
 
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			// thumb: function switcher() {
@@ -181,10 +193,14 @@ function processList(arr) {
 			}
 		}
 
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
@@ -205,9 +221,13 @@ function processFeatured(arr) {
 			}
 		}
 
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			// _id: items.snippet.resourceId.videoId,
 			featured: true,
 			hero: hiRes(items.snippet.thumbnails)
@@ -219,10 +239,15 @@ function processFeatured(arr) {
 function processSpecials(arr) {
 
 	return arr.map(function(items) {
+
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			special: true,
@@ -234,10 +259,15 @@ function processSpecials(arr) {
 
 function processOther(arr) {
 	return arr.map(function(items) {
+
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(find, 'g'), replace);
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: items.snippet.title,
+			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
