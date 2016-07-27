@@ -222,7 +222,6 @@ function processFeatured(arr) {
 
 		function hiRes(img) {
 			if (('maxres' in img) == true) {
-			if (('maxres' in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
 			} else {
 				return items.snippet.thumbnails.high.url;
