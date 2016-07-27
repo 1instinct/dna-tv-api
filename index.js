@@ -92,12 +92,12 @@ function ConvertToCSV(objArray) {
     return str;
 };
 
-function cleanTitle(title) {
-	var cleanTitle = title;
-			cleanTitle = cleanTitle.replace(" | Galore TV","");
-};
-
 function process(arr) {
+	function cleanTitle(title) {
+		var cleanTitle = title;
+				cleanTitle = cleanTitle.replace(" | Galore TV","");
+	}
+
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
@@ -111,6 +111,11 @@ function process(arr) {
 };
 
 function processLatest(arr) {
+	function cleanTitle(title) {
+		var cleanTitle = title;
+				cleanTitle = cleanTitle.replace(" | Galore TV","");
+	}
+
 	return arr.map(function(items) {
 		return {
 			url: items.id,
@@ -145,6 +150,11 @@ function processShow(arr) {
 		        str = str.replace(/\s/g,'-');
 		        str = str.replace(/^-+|-+$|(-)+/g, '$1');
 		        return str;
+		}
+
+		function cleanTitle(title) {
+			var cleanTitle = title;
+					cleanTitle = cleanTitle.replace(" | Galore TV","");
 		}
 
 		return {
@@ -186,6 +196,11 @@ function processList(arr) {
 			}
 		}
 
+		function cleanTitle(title) {
+			var cleanTitle = title;
+					cleanTitle = cleanTitle.replace(" | Galore TV","");
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
@@ -210,6 +225,11 @@ function processFeatured(arr) {
 			}
 		}
 
+		function cleanTitle(title) {
+			var cleanTitle = title;
+					cleanTitle = cleanTitle.replace(" | Galore TV","");
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			title: cleanTitle(items.snippet.title),
@@ -224,6 +244,12 @@ function processFeatured(arr) {
 function processSpecials(arr) {
 
 	return arr.map(function(items) {
+
+		function cleanTitle(title) {
+			var cleanTitle = title;
+					cleanTitle = cleanTitle.replace(" | Galore TV","");
+		}
+		
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
@@ -239,6 +265,12 @@ function processSpecials(arr) {
 
 function processOther(arr) {
 	return arr.map(function(items) {
+
+		function cleanTitle(title) {
+			var cleanTitle = title;
+					cleanTitle = cleanTitle.replace(" | Galore TV","");
+		}
+
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
