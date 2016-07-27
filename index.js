@@ -95,7 +95,7 @@ function ConvertToCSV(objArray) {
 function process(arr) {
 	return arr.map(function(items) {
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -112,7 +112,7 @@ function process(arr) {
 function processLatest(arr) {
 	return arr.map(function(items) {
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -151,7 +151,7 @@ function processShow(arr) {
 		}
 
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -194,7 +194,7 @@ function processList(arr) {
 		}
 
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -222,7 +222,7 @@ function processFeatured(arr) {
 		}
 
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -241,7 +241,7 @@ function processSpecials(arr) {
 	return arr.map(function(items) {
 
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
@@ -261,7 +261,7 @@ function processOther(arr) {
 	return arr.map(function(items) {
 
 		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(find, 'g'), replace);
+		  return str.replace(new RegExp(find), replace);
 		}
 
 		return {
