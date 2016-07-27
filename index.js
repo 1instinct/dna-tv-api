@@ -95,7 +95,7 @@ function ConvertToCSV(objArray) {
 function cleanTitle(title) {
 	var cleanTitle = title;
 			cleanTitle = cleanTitle.replace(" | Galore TV","");
-}
+};
 
 function process(arr) {
 	return arr.map(function(items) {
