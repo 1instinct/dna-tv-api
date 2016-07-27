@@ -93,11 +93,10 @@ function ConvertToCSV(objArray) {
 };
 
 function process(arr) {
-	ret
-	function escapeRegExp(str) {
+	return arr.map(function(items) {
+		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-	urn arr.map(function(items) {
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -114,11 +113,10 @@ function process(arr) {
 };
 
 function processLatest(arr) {
-	ret
-	function escapeRegExp(str) {
+	return arr.map(function(items) {
+		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-	urn arr.map(function(items) {
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -161,7 +159,6 @@ function processShow(arr) {
 		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -208,7 +205,6 @@ function processList(arr) {
 		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -240,7 +236,6 @@ function processFeatured(arr) {
 		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -263,7 +258,6 @@ function processSpecials(arr) {
 		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
@@ -287,7 +281,6 @@ function processOther(arr) {
 		function escapeRegExp(str) {
 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 		}
-
 		function replaceAll(str, find, replace) {
 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 		}
