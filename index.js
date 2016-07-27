@@ -182,8 +182,6 @@ function processList(arr) {
 
 		function hiRes(img) {
 			if ("maxres" in img) {
-			if ("maxres" in img) {
-				return items.snippet.thumbnails.maxres.url;
 				return items.snippet.thumbnails.maxres.url;
 			} else if ("standard" in img) {
 				return items.snippet.thumbnails.standard.url;
