@@ -92,58 +92,58 @@ function ConvertToCSV(objArray) {
     return str;
 };
 
-function process(arr) {
-	return arr.map(function(items) {
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
-
-		return {
-			url: items.id.videoId,
-			// _id: items.id.videoId,
-			title: replaceAll(items.snippet.title, " | Galore TV", ""),
-			desc: items.snippet.description,
-			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: items.snippet.thumbnails.maxres.url
-		}
-	});
-};
-
-function processLatest(arr) {
-	return arr.map(function(items) {
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
-
-		return {
-			url: items.id,
-			// _id: items.id,
-			title: replaceAll(items.snippet.title, " | Galore TV", ""),
-			desc: items.snippet.description,
-			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url,
-			thumbLg: items.snippet.thumbnails.maxres.url,
-			views: items.statistics.viewCount,
-			likes: items.statistics.likeCount,
-			tags: items.snippet.tags
-		}
-	});
-};
-
-function processIds(arr) {
-	return arr.map(function(items) {
-		return {
-			url: items.id.videoId,
-		}
-	});
-};
+// function process(arr) {
+// 	return arr.map(function(items) {
+// 		function escapeRegExp(str) {
+// 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+// 		}
+// 		function replaceAll(str, find, replace) {
+// 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+// 		}
+//
+// 		return {
+// 			url: items.id.videoId,
+// 			// _id: items.id.videoId,
+// 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
+// 			desc: items.snippet.description,
+// 			date: items.snippet.publishedAt,
+// 			thumb: items.snippet.thumbnails.medium.url,
+// 			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
+// 		}
+// 	});
+// };
+//
+// function processLatest(arr) {
+// 	return arr.map(function(items) {
+// 		function escapeRegExp(str) {
+// 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+// 		}
+// 		function replaceAll(str, find, replace) {
+// 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+// 		}
+//
+// 		return {
+// 			url: items.id,
+// 			// _id: items.id,
+// 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
+// 			desc: items.snippet.description,
+// 			date: items.snippet.publishedAt,
+// 			thumb: items.snippet.thumbnails.medium.url,
+// 			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg',
+// 			views: items.statistics.viewCount,
+// 			likes: items.statistics.likeCount,
+// 			tags: items.snippet.tags
+// 		}
+// 	});
+// };
+//
+// function processIds(arr) {
+// 	return arr.map(function(items) {
+// 		return {
+// 			url: items.id.videoId,
+// 		}
+// 	});
+// };
 
 function processShow(arr) {
 	return arr.map(function(items) {
@@ -176,45 +176,45 @@ function processShow(arr) {
 	});
 };
 
-function processList(arr) {
-
-	return arr.map(function(items) {
-
-		function hiRes(img) {
-			if ("maxres" in img) {
-				return items.snippet.thumbnails.maxres.url;
-			} else if ("standard" in img) {
-				return items.snippet.thumbnails.standard.url;
-			} else if ("high" in img) {
-				return items.snippet.thumbnails.high.url;
-			} else if ("medium" in img) {
-				return items.snippet.thumbnails.medium.url;
-			} else if ("default" in img) {
-				return items.snippet.thumbnails.default.url;
-			} else {
-				hiRes(img);
-			}
-		}
-
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
-
-		return {
-			url: items.snippet.resourceId.videoId,
-			// _id: items.snippet.resourceId.videoId,
-			title: replaceAll(items.snippet.title, " | Galore TV", ""),
-			desc: items.snippet.description,
-			date: items.snippet.publishedAt,
-			listId: items.snippet.playlistId,
-			thumb: hiRes(items.snippet.thumbnails),
-			thumbLg: items.snippet.thumbnails.maxres.url
-		}
-	});
-};
+// function processList(arr) {
+//
+// 	return arr.map(function(items) {
+//
+// 		function hiRes(img) {
+// 			if ("maxres" in img) {
+// 				return items.snippet.thumbnails.maxres.url;
+// 			} else if ("standard" in img) {
+// 				return items.snippet.thumbnails.standard.url;
+// 			} else if ("high" in img) {
+// 				return items.snippet.thumbnails.high.url;
+// 			} else if ("medium" in img) {
+// 				return items.snippet.thumbnails.medium.url;
+// 			} else if ("default" in img) {
+// 				return items.snippet.thumbnails.default.url;
+// 			} else {
+// 				hiRes(img);
+// 			}
+// 		}
+//
+// 		function escapeRegExp(str) {
+// 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+// 		}
+// 		function replaceAll(str, find, replace) {
+// 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+// 		}
+//
+// 		return {
+// 			url: items.snippet.resourceId.videoId,
+// 			// _id: items.snippet.resourceId.videoId,
+// 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
+// 			desc: items.snippet.description,
+// 			date: items.snippet.publishedAt,
+// 			listId: items.snippet.playlistId,
+// 			thumb: hiRes(items.snippet.thumbnails),
+// 			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
+// 		}
+// 	});
+// };
 
 function processFeatured(arr) {
 
@@ -246,30 +246,30 @@ function processFeatured(arr) {
 	});
 };
 
-function processSpecials(arr) {
-
-	return arr.map(function(items) {
-
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
-
-		return {
-			url: items.snippet.resourceId.videoId,
-			// _id: items.snippet.resourceId.videoId,
-			title: replaceAll(items.snippet.title, " | Galore TV", ""),
-			desc: items.snippet.description,
-			date: items.snippet.publishedAt,
-			special: true,
-			listId: items.snippet.playlistId,
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
-			thumbLg: items.snippet.thumbnails.maxres.url
-		}
-	});
-};
+// function processSpecials(arr) {
+//
+// 	return arr.map(function(items) {
+//
+// 		function escapeRegExp(str) {
+// 		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+// 		}
+// 		function replaceAll(str, find, replace) {
+// 		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+// 		}
+//
+// 		return {
+// 			url: items.snippet.resourceId.videoId,
+// 			// _id: items.snippet.resourceId.videoId,
+// 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
+// 			desc: items.snippet.description,
+// 			date: items.snippet.publishedAt,
+// 			special: true,
+// 			listId: items.snippet.playlistId,
+// 			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
+// 			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxdefault.jpg'
+// 		}
+// 	});
+// };
 
 function processOther(arr) {
 	return arr.map(function(items) {
@@ -289,7 +289,7 @@ function processOther(arr) {
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
 			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
-			thumbLg: items.snippet.thumbnails.maxres.url
+			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
 		}
 	});
 };
