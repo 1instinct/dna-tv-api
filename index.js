@@ -107,7 +107,8 @@ function process(arr) {
 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			thumb: items.snippet.thumbnails.medium.url
+			thumb: items.snippet.thumbnails.medium.url,
+			thumbLg: items.snippet.thumbnails.maxres.url
 		}
 	});
 };
@@ -128,7 +129,7 @@ function processLatest(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url,
-
+			thumbLg: items.snippet.thumbnails.maxres.url,
 			views: items.statistics.viewCount,
 			likes: items.statistics.likeCount,
 			tags: items.snippet.tags
@@ -169,13 +170,6 @@ function processShow(arr) {
 			title: replaceAll(items.snippet.title, " | Galore TV", ""),
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
-			// thumb: function switcher() {
-			// 	if (!items.snippet.thumbnails.maxres.url) {
-			// 		return items.snippet.thumbnails.high.url;
-			// 	} else {
-			// 		return items.snippet.thumbnails.maxres.url;
-			// 	}
-			// }
 			thumb: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 320, height: 180, crop: 'fill', flags: ["lossy", "progressive"], quality: 70, fetch_format: "auto"}),
 			thumbLg: cloudinary.url("tv/shows/posters/"+makeSlug(items.snippet.title)+".jpg", {dpr: 2.0, secure: true, width: 1280, height: 720, crop: 'fill', flags: ["lossy", "progressive"], quality: 70, fetch_format: "auto"})
 		}
@@ -188,6 +182,8 @@ function processList(arr) {
 
 		function hiRes(img) {
 			if ("maxres" in img) {
+			if ("maxres" in img) {
+				return items.snippet.thumbnails.maxres.url;
 				return items.snippet.thumbnails.maxres.url;
 			} else if ("standard" in img) {
 				return items.snippet.thumbnails.standard.url;
@@ -216,7 +212,8 @@ function processList(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: hiRes(items.snippet.thumbnails)
+			thumb: hiRes(items.snippet.thumbnails),
+			thumbLg: items.snippet.thumbnails.maxres.url
 		}
 	});
 };
@@ -226,6 +223,7 @@ function processFeatured(arr) {
 	return arr.map(function(items) {
 
 		function hiRes(img) {
+			if (('maxres' in img) == true) {
 			if (('maxres' in img) == true) {
 				return items.snippet.thumbnails.maxres.url;
 			} else {
@@ -270,7 +268,8 @@ function processSpecials(arr) {
 			date: items.snippet.publishedAt,
 			special: true,
 			listId: items.snippet.playlistId,
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
+			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
+			thumbLg: items.snippet.thumbnails.maxres.url
 		}
 	});
 };
@@ -292,7 +291,8 @@ function processOther(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg'
+			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
+			thumbLg: items.snippet.thumbnails.maxres.url
 		}
 	});
 };
