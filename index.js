@@ -93,16 +93,11 @@ function ConvertToCSV(objArray) {
 };
 
 function process(arr) {
-	function cleanTitle(title) {
-		var cleanTitle = title;
-				cleanTitle = cleanTitle.replace(" | Galore TV","");
-	}
-
 	return arr.map(function(items) {
 		return {
 			url: items.id.videoId,
 			// _id: items.id.videoId,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url
@@ -111,16 +106,11 @@ function process(arr) {
 };
 
 function processLatest(arr) {
-	function cleanTitle(title) {
-		var cleanTitle = title;
-				cleanTitle = cleanTitle.replace(" | Galore TV","");
-	}
-
 	return arr.map(function(items) {
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			thumb: items.snippet.thumbnails.medium.url,
@@ -152,15 +142,10 @@ function processShow(arr) {
 		        return str;
 		}
 
-		function cleanTitle(title) {
-			var cleanTitle = title;
-					cleanTitle = cleanTitle.replace(" | Galore TV","");
-		}
-
 		return {
 			url: items.id,
 			// _id: items.id,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			// thumb: function switcher() {
@@ -196,15 +181,10 @@ function processList(arr) {
 			}
 		}
 
-		function cleanTitle(title) {
-			var cleanTitle = title;
-					cleanTitle = cleanTitle.replace(" | Galore TV","");
-		}
-
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
@@ -225,14 +205,9 @@ function processFeatured(arr) {
 			}
 		}
 
-		function cleanTitle(title) {
-			var cleanTitle = title;
-					cleanTitle = cleanTitle.replace(" | Galore TV","");
-		}
-
 		return {
 			url: items.snippet.resourceId.videoId,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			// _id: items.snippet.resourceId.videoId,
 			featured: true,
 			hero: hiRes(items.snippet.thumbnails)
@@ -244,16 +219,10 @@ function processFeatured(arr) {
 function processSpecials(arr) {
 
 	return arr.map(function(items) {
-
-		function cleanTitle(title) {
-			var cleanTitle = title;
-					cleanTitle = cleanTitle.replace(" | Galore TV","");
-		}
-		
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			special: true,
@@ -265,16 +234,10 @@ function processSpecials(arr) {
 
 function processOther(arr) {
 	return arr.map(function(items) {
-
-		function cleanTitle(title) {
-			var cleanTitle = title;
-					cleanTitle = cleanTitle.replace(" | Galore TV","");
-		}
-
 		return {
 			url: items.snippet.resourceId.videoId,
 			// _id: items.snippet.resourceId.videoId,
-			title: cleanTitle(items.snippet.title),
+			title: items.snippet.title,
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
