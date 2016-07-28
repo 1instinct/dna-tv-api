@@ -288,8 +288,8 @@ function processOther(arr) {
 			desc: items.snippet.description,
 			date: items.snippet.publishedAt,
 			listId: items.snippet.playlistId,
-			thumb: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
-			thumbLg: 'https://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
+			thumb: 'http://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/mqdefault.jpg',
+			thumbLg: 'http://i.ytimg.com/vi/' + items.snippet.resourceId.videoId + '/maxresdefault.jpg'
 		}
 	});
 };
