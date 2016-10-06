@@ -27,6 +27,7 @@ var express = require('express'),
 	listModel20 = 'PLx0X0-cKhSOAnlBpACK4BF2zR1MAZ4vLY',
 	listTeachMe = 'PLx0X0-cKhSOCCIGzz4vEy-KVhJ5JYuTFQ',
 	listGirls = 'PLx0X0-cKhSOCDflvS223SK4XELsHhuCCg',
+	listBeautyConfessional = "PLx0X0-cKhSOAgUD3PjNTnEh4Unqgz1MxL",
 	// listInBed = 'PLx0X0-cKhSOAr0sep7jVg4Yya7IU-Q-zv',
 	// listBombshells = 'PLx0X0-cKhSOAmazTrHEZHSSc3RLQC6tQT',
 	// listSpecials = 'PLx0X0-cKhSOBXGK3Yr11j1HLa_ccrNO2G',
@@ -65,7 +66,8 @@ var express = require('express'),
 	teachMe = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listTeachMe+'&key='+apiKey,
 	girls = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listGirls+'&key='+apiKey,
 	// inBed = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listInBed+'&key='+apiKey,
-	bombshellOnStreet = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshellOnStreet+'&key='+apiKey;
+	bombshellOnStreet = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBombshellOnStreet+'&key='+apiKey,
+	beautyConfessional = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listBeautyConfessional+'&key='+apiKey;
 	// specials = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listSpecials+'&key='+apiKey;
 
 cloudinary.config({
@@ -510,6 +512,18 @@ app.get('/bombshellOnStreet', function (req, res) {
 		} else {
 			var bombshellOnStreet = processOther(response.body.items);
 			res.status(200).send(bombshellOnStreet);
+		}
+	});
+});
+
+app.get('/beautyConfessional', function (req, res) {
+	request.get(beautyConfessional).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var beautyConfessional = processOther(response.body.items);
+			res.status(200).send(beautyConfessional);
 		}
 	});
 });
