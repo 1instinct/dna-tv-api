@@ -54,6 +54,8 @@ var express = require('express'),
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
+	all = 'https://www.googleapis.com/youtube/v3/search?key='+apiKey+'&channelId='+chanID+'&part=snippet,id&order=date&maxResults=33',
+
 	exclusives = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listExclusives+'&key='+apiKey,
 	originals = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listOriginals+'&key='+apiKey,
 	etc = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listEtc+'&key='+apiKey,
@@ -300,6 +302,17 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/all', function (req, res) {
+	request.get(allVids).end(function(err,response) {
+		if (err) {
+			console.log(err);
+			res.status(404).send(err);
+		} else {
+			var allVids = processShow(response.body.items);
+			res.status(200).send(allVids);
+		}
+	});
+});
 
 app.get('/shows', function (req, res) {
 	request.get(shows).end(function(err,response) {
