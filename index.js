@@ -51,7 +51,7 @@ var express = require('express'),
 // Galore TV 3
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbkwSfDML6R12DCI5XwG6LH&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 // Galore TV 4
-	vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+listVintage+'&key='+apiKey,
+	vintage = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId='+GaloreTV5+'&key='+apiKey,
 // Galore TV 5
 // var vids = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=33&playlistId=PLPp3tIzLUEwbukcmLprg-s4qOdw9mCEPD&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s';
 
