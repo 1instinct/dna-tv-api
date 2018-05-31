@@ -5,7 +5,7 @@ var express = require('express'),
 	cloudinary = require('cloudinary'),
 	json2csv = require('nice-json2csv'),
 
-	port = 80,
+	port = process.env.PORT || 5000,
 
 	maxResults = '33',
 
