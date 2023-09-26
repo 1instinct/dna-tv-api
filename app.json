@@ -1,7 +1,4 @@
 {
   "name": "JSONfilter",
-  "description": "A quick key/value filter for external JSON data in NodeJS.",
-  "repository": "git@github.com:aaronsmulktis/JSONfilter.git",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
+  "description": "A quick key/value filter for external JSON data in NodeJS."
 }
