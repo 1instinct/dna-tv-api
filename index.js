@@ -9,7 +9,7 @@ const request = require('superagent');
 // });
 
 const app = express();
-const port = 3001 || process.env.PORT;
+const port = process.env.PORT;
 
 const config = require('./config.json');
 
