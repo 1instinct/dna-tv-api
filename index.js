@@ -9,7 +9,7 @@ const request = require('superagent');
 // });
 
 const app = express();
-const port = 3001;
+const port = 3001 || process.env.PORT;
 
 const config = require('./config.json');
 
@@ -45,7 +45,7 @@ const vintage3Url = youTubePlaylistItems+maxResults+'&playlistId='+config.playli
 const vintage4Url = youTubePlaylistItems+maxResults+'&playlistId='+config.playlists.vintage4+'&key='+apiKey;
 const vintage5Url = youTubePlaylistItems+maxResults+'&playlistId='+config.playlists.vintage5+'&key='+apiKey;
 
-const { process, processLatest, processIds, processShows, processList, processFeatures, processSpecials, processOther, processDifferent } = require('./parsers');
+const { process, processLatest, processIds, processShows, processList, processFeatures, processSpecials, processOther, processDifferent, processVideo } = require('./parsers');
 
 // pingdomApi.getChecks({
 //   target: 'someCheckId',
@@ -105,6 +105,11 @@ app.get('/vintage/2', (req, res) => handleRequest(vintage2Url, processList, res)
 app.get('/vintage/3', (req, res) => handleRequest(vintage3Url, processList, res));
 app.get('/vintage/4', (req, res) => handleRequest(vintage4Url, processList, res));
 app.get('/vintage/5', (req, res) => handleRequest(vintage5Url, processList, res));
+app.get('/video/:id', (req, res) => {
+  // console.log("RES: ", res);
+  console.log("REQ: ", req);
+  handleRequest('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+req.params.id+'&key='+apiKey, processVideo, res)
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

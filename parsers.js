@@ -39,20 +39,34 @@ function hiRes(img, video) {
 	}
 }
 
+function makeSlug(title) {
+    let str = title;
+        str = str.replace(/[^a-zA-Z0-9\s]/g,"");
+        str = str.toLowerCase();
+        str = str.replace(/\s/g,'-');
+        str = str.replace(/^-+|-+$|(-)+/g, '$1');
+        return str;
+}
+
+function escapeRegExp(str) {
+	return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+function replaceAll(str, find, replace) {
+	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
 function process(videos) {
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
 
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
 
 		return {
 			url: video.id.videoId,
 			// _id: video.id.videoId,
-			title: replaceAll(video.snippet.title, " | Galore TV", ""),
+			title: cleanTitle,
+			slug: makeSlug(cleanTitle),
 			desc: video.snippet.description,
 			date: video.snippet.publishedAt,
 			thumb_mqdefault: hiRes(video.snippet.thumbnails, video),
@@ -63,19 +77,17 @@ function process(videos) {
 };
 
 function processLatest(videos) {
+	// console.log("VIDEOS: ", videos);
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
-
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+		// console.log("VIDEO: ", video);
+		const videoId = video.id.videoId;
+		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
 
 		return {
-			id: video.id,
-			url: video.id,
-			title: replaceAll(video.snippet.title, " | Galore TV", ""),
+			id: videoId,
+			url: videoId,
+			title: cleanTitle,
+			slug: makeSlug(cleanTitle),
 			desc: video.snippet.description,
 			date: video.snippet.publishedAt,
 			thumb_mqdefault: hiRes(video.snippet.thumbnails, video),
@@ -105,20 +117,18 @@ function processShows(playlists) {
 		        return str;
 		}
 
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+
+
+		const cleanTitle = replaceAll(playlist.snippet.title, " | Galore TV", "");
 
 		return {
 			id: playlist.id,
 			url: playlist.id,
-			title: replaceAll(playlist.snippet.title, " | Galore TV", ""),
+			title: cleanTitle,
+			slug: makeSlug(cleanTitle),
 			desc: playlist.snippet.description,
 			date: playlist.snippet.publishedAt,
-			slug: makeSlug(playlist.snippet.title),
 			thumb_mqdefault: hiRes(playlist.snippet.thumbnails, playlist),
 			thumb_hqdefault: hiRes(playlist.snippet.thumbnails, playlist),
 			thumb_sddefault: hiRes(playlist.snippet.thumbnails, playlist),
@@ -130,20 +140,18 @@ function processShows(playlists) {
 };
 
 function processList(videos) {
-
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
 
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+
+
+		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
 
 		return {
 			url: video.snippet.resourceId.videoId,
 			id: video.snippet.resourceId.videoId,
-			title: replaceAll(video.snippet.title, " | Galore TV", ""),
+			title: cleanTitle,
+			slug: makeSlug(cleanTitle),
 			desc: video.snippet.description,
 			date: video.snippet.publishedAt,
 			listId: video.snippet.playlistId,
@@ -158,17 +166,16 @@ function processDifferent(videos) {
 
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
 
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+
+
+		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
 
 		return {
 			url: video.id.videoId,
 			id: video.id.videoId,
-			title: replaceAll(video.snippet.title, " | Galore TV", ""),
+			title: cleanTitle,
+			slug: makeSlug(cleanTitle),
 			desc: video.snippet.description,
 			date: video.snippet.publishedAt,
 			listId: video.snippet.playlistId,
@@ -191,20 +198,15 @@ function processFeatures(videos) {
 				return video.snippet.thumbnails.high.url;
 			}
 		}
-
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
 
 		return {
 			url: video.snippet.resourceId.videoId,
 			title: replaceAll(video.snippet.title, " | Galore TV", ""),
 			id: video.snippet.resourceId.videoId,
 			featured: true,
-			hero: hiRes(video.snippet.thumbnails)
+			hero: hiRes(video.snippet.thumbnails),
+			slug: makeSlug(cleanTitle),
 			// hero: video.snippet.thumbnails.high.url
 		}
 	});
@@ -214,12 +216,8 @@ function processSpecials(videos) {
 
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
 		
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+
 
 		return {
 			url: video.snippet.resourceId.videoId,
@@ -239,12 +237,8 @@ function processSpecials(videos) {
 function processOther(videos) {
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
 
-		function escapeRegExp(str) {
-		  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-		}
-		function replaceAll(str, find, replace) {
-		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
-		}
+
+
 
 		return {
 			url: video.snippet.resourceId.videoId,
@@ -260,6 +254,23 @@ function processOther(videos) {
 	});
 };
 
+function processVideo(video) {
+	console.log("SINGLE: ", video);
+	const cleanTitle = replaceAll(video[0].snippet.title, " | Galore TV", "");
+
+	return {
+		id: video[0].id,
+		url: video[0].id,
+		title: cleanTitle,
+		slug: makeSlug(cleanTitle),
+		desc: video[0].snippet.description,
+		date: video[0].snippet.publishedAt,
+		thumb_mqdefault: video[0].snippet.thumbnails.medium.url,
+		thumb_hqdefault: video[0].snippet.thumbnails.high.url,
+		thumb_sddefault: video[0].snippet.thumbnails.standard.url,
+	}
+}
+
 module.exports = {
 	convertToCSV: convertToCSV,
     process: process,
@@ -270,5 +281,6 @@ module.exports = {
     processFeatures: processFeatures,
     processSpecials: processSpecials,
     processOther: processOther,
-    processShows: processShows
+    processShows: processShows,
+	processVideo: processVideo
 }
