@@ -16,9 +16,6 @@
     "superagent": "^1.1.0",
     "youtube-api": "^1.0.0"
   },
-  "engines": {
-    "node": "0.10.x"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/heroku/node-js-getting-started"
