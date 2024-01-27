@@ -9,8 +9,6 @@ const request = require("superagent");
 // });
 
 const app = express();
-const port = 8000;
-// const port = 3001;
 
 const config = require("./config.json");
 
@@ -295,6 +293,9 @@ app.get("/video/:id", (req, res) => {
     res
   );
 });
+
+const port = process.env.PORT || 3001;
+// const port = 3001;
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
