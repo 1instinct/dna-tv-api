@@ -56,26 +56,6 @@ function replaceAll(str, find, replace) {
 	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-function process(videos) {
-	return videos.filter(video => !isPrivate(video)).map(function(video) {
-
-
-		const cleanTitle = replaceAll(video.snippet.title, " | Galore TV", "");
-
-		return {
-			url: video.id.videoId,
-			// _id: video.id.videoId,
-			title: cleanTitle,
-			slug: makeSlug(cleanTitle),
-			desc: video.snippet.description,
-			date: video.snippet.publishedAt,
-			thumb_mqdefault: hiRes(video.snippet.thumbnails, video),
-			thumb_hqdefault: hiRes(video.snippet.thumbnails, video),
-			thumb_sddefault: hiRes(video.snippet.thumbnails, video),
-		}
-	});
-};
-
 function processLatest(videos) {
 	// console.log("VIDEOS: ", videos);
 	return videos.filter(video => !isPrivate(video)).map(function(video) {
@@ -273,7 +253,6 @@ function processVideo(video) {
 
 module.exports = {
 	convertToCSV: convertToCSV,
-    process: process,
 	processIds: processIds,
 	processDifferent: processDifferent,
 	processLatest: processLatest,
