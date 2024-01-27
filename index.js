@@ -1,5 +1,5 @@
-import express from "express";
-import { get } from "superagent";
+const express = require("express");
+const request = require("superagent");
 
 // const pingdomApi = require('pingdom-api')({
 //   user: 'aaron@instinct.is',
@@ -12,18 +12,13 @@ const app = express();
 const port = process.env.PORT || 3001;
 // const port = 3001;
 
-import {
-  maxResults as _maxResults,
-  apiKey as _apiKey,
-  playlists,
-  channelId,
-} from "./config.json";
+const config = require("./config.json");
 
 const youTubePlaylistItems =
   "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=";
 
-const maxResults = _maxResults;
-const apiKey = _apiKey;
+const maxResults = config.maxResults;
+const apiKey = config.apiKey;
 
 // Get Playlists by Channel Id
 // https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s&maxResults=33
@@ -33,42 +28,42 @@ const beautyConfessionalUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.beautyConfessional +
+  config.playlists.beautyConfessional +
   "&key=" +
   apiKey;
 const bombshellOnStreetUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.bombshellOnStreet +
+  config.playlists.bombshellOnStreet +
   "&key=" +
   apiKey;
 const etceteraUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.etcetera +
+  config.playlists.etcetera +
   "&key=" +
   apiKey;
 const exclusivesUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.exclusives +
+  config.playlists.exclusives +
   "&key=" +
   apiKey;
 const featuredUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.featured +
+  config.playlists.featured +
   "&key=" +
   apiKey;
 const girlsUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.girls +
+  config.playlists.girls +
   "&key=" +
   apiKey;
 // const inBedUrl = youTubePlaylistItems+maxResults+'&playlistId='+config.playlists.inBed+'&key='+apiKey;
@@ -76,40 +71,40 @@ const liveFromUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.liveFrom +
+  config.playlists.liveFrom +
   "&key=" +
   apiKey;
 const model20Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.model20 +
+  config.playlists.model20 +
   "&key=" +
   apiKey;
 const mostPopularUrl =
   "https://www.googleapis.com/youtube/v3/search?key=" +
   apiKey +
   "&channelId=" +
-  channelId +
+  config.channelId +
   "&part=snippet&order=viewCount&maxResults=" +
   maxResults;
 const originalsUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.originals +
+  config.playlists.originals +
   "&key=" +
   apiKey;
 const originalsTwoUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.originalsTwo +
+  config.playlists.originalsTwo +
   "&key=" +
   apiKey;
 const showsUrl =
   "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=" +
-  channelId +
+  config.channelId +
   "&key=" +
   apiKey +
   "&maxResults=" +
@@ -118,67 +113,67 @@ const specialsUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.specials +
+  config.playlists.specials +
   "&key=" +
   apiKey;
 const teachMeUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.teachMe +
+  config.playlists.teachMe +
   "&key=" +
   apiKey;
 const theLatestUrl =
   "https://www.googleapis.com/youtube/v3/search?key=" +
   apiKey +
   "&channelId=" +
-  channelId +
+  config.channelId +
   "&part=snippet&order=date&maxResults=" +
   maxResults;
 const uncoveredUrl =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.uncovered +
+  config.playlists.uncovered +
   "&key=" +
   apiKey;
 const vintage1Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.vintage1 +
+  config.playlists.vintage1 +
   "&key=" +
   apiKey;
 const vintage2Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.vintage2 +
+  config.playlists.vintage2 +
   "&key=" +
   apiKey;
 const vintage3Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.vintage3 +
+  config.playlists.vintage3 +
   "&key=" +
   apiKey;
 const vintage4Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.vintage4 +
+  config.playlists.vintage4 +
   "&key=" +
   apiKey;
 const vintage5Url =
   youTubePlaylistItems +
   maxResults +
   "&playlistId=" +
-  playlists.vintage5 +
+  config.playlists.vintage5 +
   "&key=" +
   apiKey;
 
-import {
+const {
   process,
   processLatest,
   processIds,
@@ -189,7 +184,7 @@ import {
   processOther,
   processDifferent,
   processVideo,
-} from "./parsers";
+} = require("./parsers");
 
 // pingdomApi.getChecks({
 //   target: 'someCheckId',
@@ -216,7 +211,7 @@ const handleRequest = (url, processFunc, res) => {
     res.status(404).send("No URL");
     return;
   }
-  get(url).end((err, response) => {
+  request.get(url).end((err, response) => {
     if (err) {
       console.log(err);
       res.status(404).send(err);
@@ -227,7 +222,7 @@ const handleRequest = (url, processFunc, res) => {
   });
 };
 
-console.log("Playlists:", playlists);
+console.log("Playlists:", config.playlists);
 
 app.get("/shows", (req, res) => handleRequest(showsUrl, processShows, res));
 // app.get('/askPush', (req, res) => handleRequest(askPushUrl, processDifferent, res)); // ✅
