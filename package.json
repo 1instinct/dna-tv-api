@@ -21,7 +21,7 @@
     "method-override": "3.0.0",
     "nice-json2csv": "^0.2.0",
     "pingdom-api": "1.0.0",
-    "superagent": "^1.1.0",
+    "superagent": "^9.0.1",
     "youtube-api": "^1.0.0"
   },
   "repository": {
