@@ -1,13 +1,5 @@
 const express = require("express");
 const request = require("superagent");
-
-// const pingdomApi = require('pingdom-api')({
-//   user: 'aaron@instinct.is',
-//   pass: 'goU6e?QV0efwHL0nwe',
-//   // appkey: 'ji2zs0uh04olzkfhgc6l6h2r1qe6essq'
-//   apiKey: 'cZt54UaHSE_HbmkIFz8XJyCkHzA77_v_N5UfOU4pq5xK7FT9YMftaqHxMafOEWQUMVyBuAw'
-// });
-
 const app = express();
 
 const config = require("./config.json");
@@ -18,10 +10,6 @@ const youTubePlaylistItems =
 const maxResults = config.maxResults;
 const apiKey = config.apiKey;
 
-// Get Playlists by Channel Id
-// https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyzzsgpNlmLBKYcXLM3Ro3g&key=AIzaSyA0Ts8r7AdSbimwPQFKmbjQM8QKitGE95s&maxResults=33
-
-// const askPushUrl = youTubePlaylistItems+maxResults+'&playlistId='+config.playlists.askPush+'&key='+apiKey;
 const beautyConfessionalUrl =
   youTubePlaylistItems +
   maxResults +
@@ -64,7 +52,6 @@ const girlsUrl =
   config.playlists.girls +
   "&key=" +
   apiKey;
-// const inBedUrl = youTubePlaylistItems+maxResults+'&playlistId='+config.playlists.inBed+'&key='+apiKey;
 const liveFromUrl =
   youTubePlaylistItems +
   maxResults +
@@ -174,26 +161,17 @@ const vintage5Url =
 const {
   process,
   processLatest,
-  processIds,
   processShows,
   processList,
   processFeatures,
   processSpecials,
-  processOther,
   processDifferent,
   processVideo,
 } = require("./parsers");
 
-// pingdomApi.getChecks({
-//   target: 'someCheckId',
-//   qs: {
-//     limit: 10
-//   }
-// }, function (err, checks, response) {
-//   console.log(err, checks);
-// });
-
 app.use((req, res, next) => {
+  req.headers["if-none-match"] = "no-match-for-this";
+
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -220,27 +198,25 @@ const handleRequest = (url, processFunc, res) => {
   });
 };
 
-console.log("Playlists:", config.playlists);
+// console.log("Playlists:", config.playlists);
 
 app.get("/shows", (req, res) => handleRequest(showsUrl, processShows, res));
-// app.get('/askPush', (req, res) => handleRequest(askPushUrl, processDifferent, res)); // ✅
 app.get("/beautyConfessional", (req, res) =>
   handleRequest(beautyConfessionalUrl, processList, res)
-); // ✅
+);
 app.get("/bombshellOnStreet", (req, res) =>
   handleRequest(bombshellOnStreetUrl, processList, res)
-); // ✅
+);
 app.get("/etcetera", (req, res) =>
   handleRequest(etceteraUrl, processSpecials, res)
-); // ✅
+);
 app.get("/exclusives", (req, res) =>
   handleRequest(exclusivesUrl, processSpecials, res)
-); // ✅
+);
 app.get("/featured", (req, res) =>
   handleRequest(featuredUrl, processFeatures, res)
 );
 app.get("/girls", (req, res) => handleRequest(girlsUrl, processList, res));
-// app.get('/inBed', (req, res) => handleRequest(inBedUrl, processList, res));
 app.get("/latest", (req, res) =>
   handleRequest(theLatestUrl, processLatest, res)
 );
