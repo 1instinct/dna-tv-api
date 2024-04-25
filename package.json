@@ -17,7 +17,7 @@
     "cookie-parser": "1.4.6",
     "cors": "2.8.5",
     "dotenv": "16.4.5",
-    "express": "~4.9.x",
+    "express": "~4.19.x",
     "method-override": "3.0.0",
     "nice-json2csv": "^0.2.0",
     "pingdom-api": "1.0.0",
