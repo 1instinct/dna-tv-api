@@ -17,7 +17,7 @@ app.use("/api/youtube", youtubeRoutes);
 
 const port = process.env.PORT || 3001;
 // const port = 3001;
-// console.log("PORT: ", port);
+console.log("PORT: ", port);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

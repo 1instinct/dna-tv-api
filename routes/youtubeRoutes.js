@@ -27,7 +27,7 @@ const {
 } = require("../config/constants");
 
 const {
-  process,
+  // process,
   processLatest,
   processShows,
   processList,
@@ -115,13 +115,13 @@ router.get("/vintage/5", (req, res) =>
   handleRequest(vintage5Url, processList, res)
 );
 router.get("/video/:id", (req, res) => {
-  // console.log("RES: ", res);
-  console.log("REQ: ", req);
+  const API_KEY = process.env.API_KEY;
+
   handleRequest(
     "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" +
       req.params.id +
       "&key=" +
-      apiKey,
+      API_KEY,
     processVideo,
     res
   );

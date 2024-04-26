@@ -1,6 +1,5 @@
 const config = require("../config/config.json");
-
-const API_KEY = config.apiKey;
+const API_KEY = process.env.API_KEY;
 
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 const PLAYLIST_ITEMS = `${BASE_URL}/playlistItems?part=snippet`;

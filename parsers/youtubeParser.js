@@ -174,7 +174,6 @@ function processSpecials(videos) {
 }
 
 function processVideo(video) {
-  console.log("SINGLE: ", video);
   const cleanTitle = replaceAll(video[0].snippet.title, " | Galore TV", "");
 
   return {
